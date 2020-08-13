@@ -11,23 +11,24 @@
 <body>
 
     <!-- 입력 만들기: 입력 id는 user_input -->
-    ​<input type="text" id="user_input"><br>
+    ​<input type="text" id="user_input" value="(이전페이지검색결과))"><br>
     
 
     <!-- 버튼이 눌리면 search 함수 시작 -->
     <button onclick="search()">검색</button>
 
+    <!-- 이전 페이지 결과 가져오기: 정규표현식을 사용해서 URL 파라미터 가져오기 -->
+
 
     <!-- 아래부터 자바스크립트 -->
     <script type="text/javascript">
 
-
         function search() {
             /* id가 input인 요소에서 value를 찾아온다. 그 값을 변수 input에 저장.*/
-            var input = document.getElementById("user_input").value;
+            var input = document.getElementById("user_input").value; 
             
             /* 입력된 항목으로 검색하여 일단 구글 검색 결과로 이동.. */
-            window.location.href = 'http://www.google.com/search?q='+input;
+            window.location.href = 'https://search.shopping.naver.com/search/all?query='+input;
 
         }
 
