@@ -1,1 +1,43 @@
 <!--찬진-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>찬진</title>
+</head>
+
+<body>
+    <div>1.</div>
+        <img src="images/200x200.png" alt="My Image"> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        돼지고기 김치찌개 
+        <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        재료
+        <input type="text" id="user_input" value="배추"> ​<button onclick="search()">검색</button>
+        <input type="text" id="user_input" value="김치"> <button onclick="search()">검색</button> 
+        <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; 
+        <input type="text" id="user_input" value="양파"><button onclick="search()">검색</button> 
+        <input type="text" id="user_input" value="대파"> <button onclick="search()">검색</button>
+        <input type="text" id="user_input" value="쪽파"> <button onclick="search()">검색</button>
+        </div>
+        </div>
+        <script type="text/javascript">
+            function search() {
+                /* id가 input인 요소에서 value를 찾아온다. 그 값을 변수 input에 저장.*/
+                var input = document.getElementById("user_input").value; 
+                
+                /* 입력된 항목으로 검색하여 일단 구글 검색 결과로 이동.. */
+                window.location.href = 'https://search.shopping.naver.com/search/all?query='+input;
+            }
+        </script>
+
+</body>
+
+</html>
