@@ -9,7 +9,7 @@ db = client.recipe
 
 headers ={"User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36"}
 
-i=range(1,3000)
+i=range(1,50)
 # HTML을 BeautifulSoup이라는 라이브러리를 활용해 검색하기 용이한 상태로 만듦
 #contents_area_full > ul > ul
 
