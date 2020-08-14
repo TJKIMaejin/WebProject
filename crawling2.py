@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
 client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
-db = client.recipe2
+db = client.recipe3
 headers ={"User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36"}
 
 i=range(1,11)
@@ -23,9 +23,9 @@ for a in i:
         pass
 
 print(recipe)
-
+k = range(0, len(recipe))
 for kk in i:
     doc={
-        'recipe': recipe
+        'recipe': recipe[kk]
     }
-    db.recipe2.insert_one(doc)
+    db.recipe3.insert_one(doc)
