@@ -9,7 +9,7 @@ db = client.recipe
 
 headers ={"User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36"}
 
-i=range(1,50)
+i=range(1,2)
 # HTML을 BeautifulSoup이라는 라이브러리를 활용해 검색하기 용이한 상태로 만듦
 #contents_area_full > ul > ul
 
@@ -35,14 +35,15 @@ main_step=[]
 main_title=[]
 main_recipe=[]
 main_recipe2=[]
-
+#contents_area > div.view2_summary > h3
 for p in page:
     data2 = requests.get('https://www.10000recipe.com'+p,headers=headers)
     soup = BeautifulSoup(data2.text, 'html.parser')
 
     try:
-        title = soup.select('#contents_area > div.view2_summary')
+        title=soup.select_one('#contents_area > div.view2_summary > h3')
         img = soup.select_one('#contents_area > div.view2_pic > div.centeredcrop > img')
+
         recipe = soup.select('#divConfirmedMaterialArea > ul:nth-of-type(1) > a')
         recipe2 = soup.select('#divConfirmedMaterialArea > ul:nth-of-type(2) > a')
         step = soup.find("div", {"class": "view_step"})
@@ -55,11 +56,6 @@ for p in page:
             i += 1
             last += str(i) + a.text + "&"
         last = last[:-1]
-
-
-
-        for craw in title:
-          a_tag = craw.select_one('h3')
 
     # a의 text를 찍어본다.
         for craw in recipe:
@@ -80,12 +76,13 @@ for p in page:
         main_img.append(img['src'])
         main_step.append(last)
         main_recipe.append(last_recipe1.strip())
-        main_title.append(a_tag.text)
+        main_title.append(title.text)
 
 
     except:
         pass
 k = range(0, len(page))
+
 
 
 for i in k:
