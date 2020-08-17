@@ -23,10 +23,6 @@ for a in i:
             page.append(kk.find('a')['href'])
             # (recipe.append(kk.find('a').text))
 
-
-
-
-
     except:
         pass
 name=[]
