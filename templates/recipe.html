@@ -1,0 +1,37 @@
+<!--윤아-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>윤아</title>
+</head>
+
+<body>
+
+    <!-- 재료 항목 이름 띄우기 -->
+    <p id = element>돼지고기</p>
+
+
+    <!-- 버튼이 눌리면 search 함수 시작 -->
+    <button onclick = "search()">검색</button>
+
+
+    <!-- 아래부터 자바스크립트 -->
+    <script type = "text/javascript">
+
+        function search() {
+            /* 재료 이름(텍스트)을 가져온다. 그 값을 변수 input에 저장.*/
+            var input = document.getElementById("element").innerText; 
+            
+            /* 입력된 항목으로 검색하여 일단 구글 검색 결과로 이동.. */
+            window.location.href = 'https://search.shopping.naver.com/search/all?query='+input;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
