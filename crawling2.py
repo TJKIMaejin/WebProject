@@ -7,7 +7,7 @@ db = client.recipe3
 
 headers ={"User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36"}
 
-i=range(1,11)
+i=range(1,2)
 page=[]
 recipe=[]
 for a in i:

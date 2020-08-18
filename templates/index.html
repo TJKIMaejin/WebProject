@@ -17,20 +17,28 @@
       function listing() {
         $.ajax({
           type: "GET",
-          url: "/",
+          url: "/orders",
           data: {},
           success: function(response){
              if (response['result'] == 'success') {
-               let orders = response['orders'];
+               let list2 = response['list2'];
                console.log(orders);
-               for (let i = 0; i < orders.length; i++) {
-                 make_card(orders[i]['name'],orders[i]['count'],orders[i]['address'],orders[i]['phone'])
+               for (let i = 0; i < list2.length; i++) {
+                 make_card(list2[i]['name'],list2[i]['category'])
                }
              } else {
                alert('기사를 받아오지 못했습니다');
              }
           }
         })
+      }
+	  
+      function make_card(name,category) {
+        let temp_html = '<tr>\
+            <td>'+name+'</td>\
+            <td>'+category+'</td>\
+          </tr>';
+        $('#orders-box').append(temp_html);
       }
 
      
