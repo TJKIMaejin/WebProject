@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="path/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/cs.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 </head>
 
 <!-- ajax 관련 코드 (by.세일) 건들지 말 것  -->
@@ -36,25 +37,156 @@
      
 </script>
 
+
 <body>
 	<h1>오늘 뭐 먹지?</h1>
-	<form>
+	<form action='http://google.com'>
 		<div class="search">
 			<input type="search" placeholder="ex.">
-			<button type="submit" value="submit">
+			<button type="button" onclick="location.href='http://google.com' ">
 				<i class="fa fa-search"></i>
 			</button>
 		</div>
 	</form>
 	<div class="line"></div>
+
 	<form>
-		<div class="check">
-			<input type="checkbox" name="ingredient" value="pork">돼지고기
-			<input type="checkbox" name="ingredient" value="carrot">당근
-			<input type="checkbox" name="ingredient" value="onion">양파
-			<input type="checkbox" name="ingredient" value="greenonoion">대파
+		<div class="s_category">
+			<span class="s_category_tit">Category All</span>
+			<span class="b1">알류</span>
+			<span class="b2">유제품</span>
+			<span class="b3">유지류</span>
+			<span class="b4">견과류</span>
+			<span class="b5">과일류</span>
+			<span class="b6">육류</span>
+			<span class="b7">콩류</span>
+			<span class="b8">곡류</span>
+			<span class="b9">해조류</span>
+			<span class="b10">어패류</span>
+			<span class="b11">버섯류</span>
+			<span class="b12">채소류</span>
+		</div>
+		<div class="b1_board">
+			<div class="b1_list">
+				<input type="checkbox" name="b1_list" value="1">재료1
+				<input type="checkbox" name="b1_list" value="2">재료2
+				<input type="checkbox" name="b1_list" value="3">재료3
+				<input type="checkbox" name="b1_list" value="4">재료4
+				<input type="checkbox" name="b1_list" value="5">재료5
+				<input type="checkbox" name="b1_list" value="6">재료6
+				<input type="checkbox" name="b1_list" value="7">재료7
+				<input type="checkbox" name="b1_list" value="8">재료8
+				<input type="checkbox" name="b1_list" value="9">재료9
+				<input type="checkbox" name="b1_list" value="10">재료10
+			</div>
+			<div class="b1_list">
+				<input type="checkbox" name="b1_list" value="11">재료11
+				<input type="checkbox" name="b1_list" value="12">재료12
+				<input type="checkbox" name="b1_list" value="13">재료13
+				<input type="checkbox" name="b1_list" value="14">재료14
+				<input type="checkbox" name="b1_list" value="15">재료15
+				<input type="checkbox" name="b1_list" value="16">재료16
+				<input type="checkbox" name="b1_list" value="17">재료17
+				<input type="checkbox" name="b1_list" value="18">재료18
+				<input type="checkbox" name="b1_list" value="19">재료19
+				<input type="checkbox" name="b1_list" value="20">재료20
+			</div>
+			<button class="bt">제출하기</button>
+		</div>
+		<div class="b2_board">
+			<div class="b2_list">
+				<input type="checkbox" name="b2_list" value="1">재료1
+				<input type="checkbox" name="b2_list" value="2">재료2
+				<input type="checkbox" name="b2_list" value="3">재료3
+				<input type="checkbox" name="b2_list" value="4">재료4
+				<input type="checkbox" name="b2_list" value="5">재료5
+				<input type="checkbox" name="b2_list" value="6">재료6
+				<input type="checkbox" name="b2_list" value="7">재료7
+				<input type="checkbox" name="b2_list" value="8">재료8
+				<input type="checkbox" name="b2_list" value="9">재료9
+				<input type="checkbox" name="b2_list" value="10">재료10
+			</div>
+			<div class="b2_list">
+				<input type="checkbox" name="b2_list" value="11">재료11
+				<input type="checkbox" name="b2_list" value="12">재료12
+				<input type="checkbox" name="b2_list" value="13">재료13
+				<input type="checkbox" name="b2_list" value="14">재료14
+				<input type="checkbox" name="b2_list" value="15">재료15
+				<input type="checkbox" name="b2_list" value="16">재료16
+				<input type="checkbox" name="b2_list" value="17">재료17
+				<input type="checkbox" name="b2_list" value="18">재료18
+				<input type="checkbox" name="b2_list" value="19">재료19
+				<input type="checkbox" name="b2_list" value="20">재료20
+			</div>
+			<button class="bt">제출하기</button>
+		</div>
+		<div class="b3_board">
+			<div class="b3_list">
+				<input type="checkbox" name="b3_list" value="1">재료1
+				<input type="checkbox" name="b3_list" value="2">재료2
+				<input type="checkbox" name="b3_list" value="3">재료3
+				<input type="checkbox" name="b3_list" value="4">재료4
+				<input type="checkbox" name="b3_list" value="5">재료5
+				<input type="checkbox" name="b3_list" value="6">재료6
+				<input type="checkbox" name="b3_list" value="7">재료7
+				<input type="checkbox" name="b3_list" value="8">재료8
+				<input type="checkbox" name="b3_list" value="9">재료9
+				<input type="checkbox" name="b3_list" value="10">재료10
+			</div>
+			<div class="b3_list">
+				<input type="checkbox" name="b3_list" value="11">재료11
+				<input type="checkbox" name="b3_list" value="12">재료12
+				<input type="checkbox" name="b3_list" value="13">재료13
+				<input type="checkbox" name="b3_list" value="14">재료14
+				<input type="checkbox" name="b3_list" value="15">재료15
+				<input type="checkbox" name="b3_list" value="16">재료16
+				<input type="checkbox" name="b3_list" value="17">재료17
+				<input type="checkbox" name="b3_list" value="18">재료18
+				<input type="checkbox" name="b3_list" value="19">재료19
+				<input type="checkbox" name="b3_list" value="20">재료20
+			</div>
+			<button class="bt">제출하기</button>
 		</div>
 	</form>
+	<script>
+		$(document).ready(function()
+		{
+			$('.b1').click(function(){
+				if($('.b1').hasClass('b1')){
+					$('.b1').addClass('close').removeClass('b1');
+       				$('.b1_board').css('visibility', 'visible');}
+				else if($('.close').hasClass('close')){
+					$('.close').addClass('b1').removeClass('close');  
+       				$('.b1_board').css('visibility', 'hidden');
+				}
+			});
+		});
+
+		$(document).ready(function()
+		{
+			$('.b2').click(function(){
+				if($('.b2').hasClass('b2')){
+					$('.b2').addClass('close').removeClass('b2');
+       				$('.b2_board').css('visibility', 'visible');}
+				else if($('.close').hasClass('close')){
+					$('.close').addClass('b2').removeClass('close');  
+       				$('.b2_board').css('visibility', 'hidden');
+				}
+			});
+		});
+
+		$(document).ready(function()
+		{
+			$('.b3').click(function(){
+				if($('.b3').hasClass('b3')){
+					$('.b3').addClass('close').removeClass('b3');x
+       				$('.b3_board').css('visibility', 'visible');}
+				else if($('.close').hasClass('close')){
+					$('.close').addClass('b2').removeClass('close');  
+       				$('.b3_board').css('visibility', 'hidden');
+				}
+			});
+		});
+	</script>
 </body>
 </html>
-
