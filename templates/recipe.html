@@ -4,34 +4,123 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>윤아</title>
+    <title>레시피상세페이지</title>
+    <meta charset="utf-8">
+
+    <!-- JQuery import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        
+        /* 전체 영역 */
+        .wrapper{
+            background-color: purple;
+            width: 1500px;
+            height: 1800px; 
+            margin: auto; 
+            
+        }
+
+        /* 요리이름 */
+        #title {
+            background-color: aqua;
+            color: black;
+            text-align: center; 
+            width: 1150px;
+            height: 200px;
+            float: right;
+            margin: 5px;
+        }
+
+        /* 요리 이미지 */
+        #image{
+            width: 300px;
+            height: 300px;
+            float: left;
+            margin: 5px;
+        }
+
+        /* 요리 재료 */
+        #ingredients {
+            background-color: black;
+            color: white;
+            width: 1110px;
+            height: 90px;
+            float: right;
+            margin: 5px;
+            padding: 0px 20px 0px 20px;
+            
+        }
+        
+        /* 조리 과정(하단) */
+        #steps {
+            background-color: brown;
+            color: white;
+            width: 1470px;
+            margin: auto;
+            padding: 10px 10px 10px 10px;
+            float: right;
+            margin: 5px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        
+        $.ajax({
+            type:"GET",
+            url: "/yuna1?_id=5f3fcfe1793b37969b02d161",
+            data: {},
+            success: function(response){
+                $(document).ready(function(){
+                    /* title 변경 */
+                    $("#title").html('');
+                    $("#title").append("<h1>"+response["info"]["title"]+"</h1>");
+
+                    /* 이미지 변경 */
+                    $("#div_img").html('');
+                    $("#div_img").append("<img id = image src="+response["info"]["img"]+">");
+
+                    /* ingredients 변경 */
+                    $("#ingredients").html('');
+                    $("#ingredients").append(response["info"]["recipe_main"]);
+
+                    /* steps 변경 */
+                    $("#steps").html('');
+                    $("#steps").append(response["info"]["step"]);
+
+                });
+            }
+        })
+    </script>
+
 </head>
 
 <body>
+    <div class = wrapper>
+        <div id = "title">
+            <!-- 요리 이름 칸 -->
+        </div>
+        
+        <div id = "div_img">
+            <!-- 요리 사진 칸 -->
+        </div>
 
-    <!-- 재료 항목 이름 띄우기 -->
-    <p id = element>돼지고기</p>
-
-
-    <!-- 버튼이 눌리면 search 함수 시작 -->
-    <button onclick = "search()">검색</button>
-
-
-    <!-- 아래부터 자바스크립트 -->
-    <script type = "text/javascript">
-
-        function search() {
-            /* 재료 이름(텍스트)을 가져온다. 그 값을 변수 input에 저장.*/
-            var input = document.getElementById("element").innerText; 
+        <div id = ingredients>
+            <!-- 요리 재료 칸 -->
             
-            /* 입력된 항목으로 검색하여 일단 구글 검색 결과로 이동.. */
-            window.location.href = 'https://search.shopping.naver.com/search/all?query='+input;
+        </div>
 
-        }
+        <div id = steps>
+            <!-- 과정 칸 -->
+        </div>
+        
+    </div>
+    
+    
+    
 
-    </script>
-
+    
+	
 </body>
 
 </html>
