@@ -22,7 +22,15 @@
           success: function(response){
              if (response['result'] == 'success') {
                let list2 = response['list2'];
-               console.log(orders);
+			   console.log(list2);
+			   for(let i =0; i <list2.length; i++)
+			   {
+				let temp_html = '<tr>\
+            	<td>'+name+'</td>\
+           		<td>'+category+'</td>\
+         		</tr>';
+        		$('#orders-box').append(temp_html);
+			   }
                for (let i = 0; i < list2.length; i++) {
                  make_card(list2[i]['name'],list2[i]['category'])
                }
@@ -34,15 +42,12 @@
       }
 	  
       function make_card(name,category) {
-        let temp_html = '<tr>\
-            <td>'+name+'</td>\
-            <td>'+category+'</td>\
-          </tr>';
-        $('#orders-box').append(temp_html);
+        
       }
 
      
 </script>
+
 
 <body>
 	<h1>오늘 뭐 먹지?</h1>
