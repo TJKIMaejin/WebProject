@@ -27,15 +27,7 @@ def yun_render():
     return render_template('recipe.html')
     
 
-
-""" def yun_json(): 
-    
-    db의 list -> json
-    
-    result = list(db.recipe.find({}))
-    return jsonify({'result':'success', 'result':result}) """
-
-
+""" DB에서 _id값에 맞는 레시피 정보 가져오기 """
 @app.route('/yuna1', methods=['GET'])
 def yuna_get():
     # 클라이언트가 url에 뿌린 _id의 value 갖고오기.
@@ -47,9 +39,14 @@ def yuna_get():
     # .find도 안됨.. find_one만됨... 왜?? 사실 하나만 필요해서 알 필요 없음
     recipe_info = db.recipe.find_one({"_id":id}, {"_id":0})
 
-    
     return jsonify({"result":'success', 'info':recipe_info}) 
 
+""" 찬진이 검색 결과(재료)로 연결하기 """
+@app.route("/chan", methods=["GET"])
+def chan_get():
+    # 일단 요청 결과만 리턴하자.. 구체적 내용은 추후에 작업
+    ingredi = request.args.get("ingredi")
+    return ingredi
 
 
 if __name__ == '__main__':

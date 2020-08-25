@@ -4,123 +4,149 @@
 <html>
 
 <head>
-    <title>레시피상세페이지</title>
+    <!-- Webpage Title -->
+    <title>HO</title>
+
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- JQuery import -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+    <!-- style -->
     <style type="text/css">
-        
-        /* 전체 영역 */
-        .wrapper{
-            background-color: purple;
-            width: 1500px;
-            height: 1800px; 
-            margin: auto; 
-            
+        * {
+            font-family: 'Stylish', sans-serif;
         }
 
-        /* 요리이름 */
-        #title {
-            background-color: aqua;
-            color: black;
-            text-align: center; 
-            width: 1150px;
-            height: 200px;
-            float: right;
-            margin: 5px;
-        }
-
-        /* 요리 이미지 */
-        #image{
-            width: 300px;
-            height: 300px;
-            float: left;
-            margin: 5px;
-        }
-
-        /* 요리 재료 */
-        #ingredients {
-            background-color: black;
-            color: white;
-            width: 1110px;
-            height: 90px;
-            float: right;
-            margin: 5px;
-            padding: 0px 20px 0px 20px;
-            
-        }
-        
-        /* 조리 과정(하단) */
-        #steps {
-            background-color: brown;
-            color: white;
-            width: 1470px;
+        .wrap {
+            width: 500px;
             margin: auto;
-            padding: 10px 10px 10px 10px;
-            float: right;
-            margin: 5px;
+        }
+
+        .image {
+            background-image: url('https://www.conscious-skincare.com/wp-content/uploads/2016/02/glc-candle-lit-with-new-gift-box.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 500px;
+            height: 300px
+        }
+
+        .info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
         }
     </style>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-        
-        $.ajax({
-            type:"GET",
-            url: "/yuna1?_id=5f3fcfe1793b37969b02d161",
-            data: {},
-            success: function(response){
-                $(document).ready(function(){
-                    /* title 변경 */
-                    $("#title").html('');
-                    $("#title").append("<h1>"+response["info"]["title"]+"</h1>");
+        let now_query = document.location.href.split("?")[1];
+        /*  현재 /yuna에서 쿼리 가져오기 */
+        /* now_query가 _id에 대한 쿼리가 아닌 경우 에러핸들링 필요할거같은데.... 필요할까?
+        일단 안해줌. 
+        --> 아 근데 /yuna가 빈 레이아웃만 나오니까 핸들링 필요하겠다...
+        --> 그리고 렌더링과 GET 한꺼번에 하는 방법 없을까?? yuna1을 꼭 사용해야해??*/
 
-                    /* 이미지 변경 */
-                    $("#div_img").html('');
-                    $("#div_img").append("<img id = image src="+response["info"]["img"]+">");
+        /* _id로 쿼리한 경우 */
+        query_content = now_query.split("=")[0];
 
-                    /* ingredients 변경 */
-                    $("#ingredients").html('');
-                    $("#ingredients").append(response["info"]["recipe_main"]);
+        if (query_content == "_id") {
+            $.ajax({
 
-                    /* steps 변경 */
-                    $("#steps").html('');
-                    $("#steps").append(response["info"]["step"]);
+                type: "GET",
+                url: "/yuna1?" + now_query,
+                data: {},
+                success: function (response) {
+                    $(document).ready(function () {
+                        /* title 변경 */
+                        $("#title").html('');
+                        $("#title").append("<h1>" + response["info"]["title"] + "</h1>");
+                        $("#title").append(response["info"]["title"].length);
 
-                });
+                        /* 이미지 변경 */
+                        $("#div_img").html('');
+                        $("#div_img").append("<img class = \"image\" src=" + response["info"]["img"] + ">");
+
+
+                        /* ingredients 변경 */
+                        $("#ingredients").html('');
+                        // "&"로 parsing함에 주의
+                        let ingredi_parsed = response["info"]["recipe_main"].split("&");
+
+                        for (var i in ingredi_parsed){
+                            for (var j in i){
+                                console.log("ingredi_parsed[i]: "+ingredi_parsed[i]);
+                            }
+                        }
+
+                        for (var elmt in ingredi_parsed) {
+                            //$("#ingredients").append("<p>"+ingredi_parsed[elmt]+"<\p>"); // 하이퍼링크로 연결했는데 여백까지 밑줄 --> 링크 사이 간격 어떻게 예쁘게??
+                            // ingredi에 공백이 들어간 재료(ex. 다진 마늘)로 쿼리하는 경우, 제대로 안됨.. 수정 필요
+                            var theIngredi = ingredi_parsed[elmt]; // 특정 재료 방문: 다진마늘, 돼지목살 등등
+                            // theIngredi 문자열 길이 확인해보면 되게 긴데 대체 왜?
+
+                            // 일단 하이퍼링크 걸기
+
+                            $("#ingredients").append("<A href = \"/chan?ingredi=" + encodeURIComponent(theIngredi) + "\" target = blank>"
+                                + theIngredi + "</A>");
+
+                        }
+
+                        // steps 변경.. 근데 끝에만 내용 들어가면 되니까 html 내용 안지워도 될듯
+                        // $("#steps").html('');
+                        // "&"로 parsing함에 주의
+                        let steps_parsed = response["info"]["step"].split("&");
+
+                        for (var elmt in steps_parsed) {
+
+                            // 출력은 순서 번호와 설명으로. ex) 1. 양념고기를 ...
+                            $("#steps").append("<li class=\"list-group-item\">" + (Number(elmt) + 1) + ". " + steps_parsed[elmt].substring(1) + "</li>"); // 일단 paragraph로 나누어둠..
+
+                        }
+                    }
+                    );
+                }
             }
-        })
-    </script>
+            )
+        }
 
+
+        // _id로 쿼리하지 않은 경우
+        else {
+            alert("틀린 쿼리!");
+            // 빈 템플릿 연결해야하나...?
+        }
+
+    </script>
 </head>
 
 <body>
-    <div class = wrapper>
-        <div id = "title">
-            <!-- 요리 이름 칸 -->
+    <div class="wrap">
+        <div id="div_img"></div>
+        <div class="info">
+            <h1 id="title">제목</h1>
+            <h3 id="ingredients">재료 </h3>
         </div>
-        
-        <div id = "div_img">
-            <!-- 요리 사진 칸 -->
-        </div>
+        <ul class="list-group" id=steps>
+            <li class="list-group-item disabled" aria-disabled="true" id=steps>
+                <h3 id=step>step</h3> <!-- 스텝은 뭐하는거야?.? -->
+            </li>
 
-        <div id = ingredients>
-            <!-- 요리 재료 칸 -->
-            
-        </div>
-
-        <div id = steps>
-            <!-- 과정 칸 -->
-        </div>
-        
-    </div>
-    
-    
-    
-
-    
-	
 </body>
 
 </html>
