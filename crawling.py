@@ -60,8 +60,8 @@ for p in page:
     # a의 text를 찍어본다.
         for craw in recipe:
             a_tag = craw.find('li')
-            last_recipe1 += a_tag.text.split("\n")[0] + "&"
-            # print(last_recipe1)
+            last_recipe1 += a_tag.text.split("\n")[0].strip() + "&"
+
         last_recipe1 = last_recipe1[:-1].strip()
 
 
@@ -69,10 +69,12 @@ for p in page:
         for craw in recipe2:
         # movie 안에 a 가 있으면,
             a_tag = craw.find('li')
-            last_recipe2 += a_tag.text.split("\n")[0] + "&"
+            last_recipe2 += a_tag.text.split("\n")[0].strip() + "&"
+
         last_recipe2 = last_recipe2[:-1]
 
         main_recipe2.append(last_recipe2)
+
         main_img.append(img['src'])
         main_step.append(last)
         main_recipe.append(last_recipe1.strip())
