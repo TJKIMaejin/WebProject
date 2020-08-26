@@ -30,7 +30,6 @@ function listing() {
 }
 
 function check() {
-  alert('sfjdisfjis');
   // Get the checkbox
   var checkBox = document.getElementById("myCheck");
   // Get the output text
@@ -39,12 +38,13 @@ function check() {
   // If the checkbox is checked, display the output text
   
   if (checkBox == null){
-    return
+    return;
    }
 
   if (checkBox.checked == true){
+    alert('sfjdisfjis');
     $(function(){
-      $("input:checkbox[id='계란']").prop("checked", alert('세일'));
+      $("input:checkbox[gus[0]]").prop("checked", alert('세일'));
   })
     text.style.display = "block";
     
@@ -73,7 +73,7 @@ function catListing(Val) {
     for (let i = 0; i < gus.length; i++) {
       temp_html +=
         '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
+        // '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
         // "<input type=" + "\"checkbox\" " + "name=" +Val+ " value="+i+1+">"+gus[i]
   
       }
