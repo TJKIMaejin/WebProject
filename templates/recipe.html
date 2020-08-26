@@ -96,14 +96,14 @@
 
                         for (var elmt in ingredi_parsed) {
                             //$("#ingredients").append("<p>"+ingredi_parsed[elmt]+"<\p>"); // 하이퍼링크로 연결했는데 여백까지 밑줄 --> 링크 사이 간격 어떻게 예쁘게??
-                            // ingredi에 공백이 들어간 재료(ex. 다진 마늘)로 쿼리하는 경우, 제대로 안됨.. 수정 필요
+    
                             var theIngredi = ingredi_parsed[elmt]; // 특정 재료 방문: 다진마늘, 돼지목살 등등
-                            // theIngredi 문자열 길이 확인해보면 되게 긴데 대체 왜?
+                            
 
                             // 일단 하이퍼링크 걸기
 
                             $("#ingredients").append("<A href = \"/chan?ingredi=" + encodeURIComponent(theIngredi) + "\" target = blank>"
-                                + theIngredi + "</A>");
+                                + theIngredi + "</A><p></p>");
 
                         }
 
