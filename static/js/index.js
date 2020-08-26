@@ -4,6 +4,7 @@ $(document).ready(function () {
 
   listing();
   catListing();
+  
 });
 
 function listing() {
@@ -76,9 +77,8 @@ function catListing(Val) {
     ]
   } else if (Val == '버섯류') {
     gus = ["팽이버섯", "목이버섯", "만가닥버섯", "맛타리버섯", "건표고버섯", "표고버섯", "백만송이버섯", "버섯", "새송이버섯",
-      ["애느타리버섯", "양송이버섯", "팽이버섯", "표고버섯", "표고버섯가루"]
-    }
-    else if (Val == '채소류') {
+      "애느타리버섯", "양송이버섯", "팽이버섯", "표고버섯", "표고버섯가루"]
+  } else if (Val == '채소류') {
       gus = ["깻잎", "숙주나물", "다진마늘", "다진생강", "청양고추", "콩나물", "비름나물", "대파", "양파", "고수", "가지", "감자", "감자전분", "건고추", "고추", "청양고추", "고구마", "고구마줄기", "김치", "냉이", "꽈리고추", "브로콜리",
         "느타리버섯", "단무지", "단호박", "달래", "당근", "대추", "대파", "더덕", "도라지", "도토리묵", "돌나물", "돌미나리", "돼지호박",
         "두릅", "로메인", "로즈마리", "마늘", "마늘종", "무", "무말랭이", "무순", "미나리", "밤", "방울양배추", "방울토마토", "방풍나물",
@@ -114,12 +114,21 @@ function catListing(Val) {
         "호박잎", "화이트와인", "화이트초콜릿", "후리가케", "흑임자"
       ]
     }
+    if (Val == '알류')
+    {
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<option value=' + gus[i] + '>' + gus[i] + '</option>'
+      temp_html += '<div class="b3_board">\
+			<div class="b3_list">\
+				<input type="checkbox" name="'+알류+'" value="'+i+1+'">'+gus[i]+'\
+			</div>\
+		</div>'
     }
+  }
 
-
-    $('#inputState_select2').empty()
-    $('#inputState_select2').append(temp_html)
+  $('#b3').empty()
+  $('#b3').append(temp_html)
+    
+ 
+    
 
   }

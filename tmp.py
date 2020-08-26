@@ -11,11 +11,28 @@ def home():
     index.html 페이지 연결.
     """               
     return render_template('recipe.html')
+    
 
-@app.route('/api',methods=['GET']) # 페이지 연결: 루트페이지
-def yun():
+""" DB에서 _id값에 맞는 레시피 정보 가져오기 """
+@app.route('/yuna1', methods=['GET'])
+def yuna_get():
+    # 클라이언트가 url에 뿌린 _id의 value 갖고오기.
+    id = request.args.get("_id")
+    id = ObjectId(id)
+    
 
-    list1 = list(db.recipe.find({},{'_id':0}))
+    # 클라이언트 요청과 일치하는 document 찾기 {키:밸류} --> id는 제외하고 넘겨줌.. Object 문제,, 대체 왜?? 그냥 모르자 필요 없으니까
+    # .find도 안됨.. find_one만됨... 왜?? 사실 하나만 필요해서 알 필요 없음
+    recipe_info = db.recipe.find_one({"_id":id}, {"_id":0})
+
+    return jsonify({"result":'success', 'info':recipe_info}) 
+
+""" 찬진이 검색 결과(재료)로 연결하기 """
+@app.route("/chan", methods=["GET"])
+def chan_get():
+    # 일단 요청 결과만 리턴하자.. 구체적 내용은 추후에 작업
+    ingredi = request.args.get("ingredi")
+    return ingredi
 
     return jsonify({'result':'success', 'recipe':list1})
 
