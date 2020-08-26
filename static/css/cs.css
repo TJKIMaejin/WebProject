@@ -11,7 +11,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	border-bottom: 1px solid #e4e4e4;
 	padding: 25px 0;
-	width: 1150px;
+	width: 1280px;
 	margin: 0 auto
 }
 .s_category_tit {
@@ -44,7 +44,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -63,7 +63,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	background: #E0FFFF;
 }
 .b1_list {
-	float: left;
+	text-align: left;
 }
 .b1_list input{
 	margin: 30px 5px 0px 30px;
@@ -96,7 +96,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -115,7 +115,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	display: none;
 }
 .b2_list {
-	float: left;
+	text-align: left;
 }
 .b2_list input{
 	margin: 30px 5px 0px 30px;
@@ -148,7 +148,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -167,7 +167,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	display: none;
 }
 .b3_list {
-	float: left;
+	text-align: left;
 }
 .b3_list input{
 	margin: 30px 5px 0px 30px;
@@ -200,7 +200,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -214,12 +214,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 120px;
+	height: 70px;
 	background: #E0FFFF;
 	display: none;
 }
 .b4_list {
-	float: left;
+	text-align: left;
 }
 .b4_list input{
 	margin: 30px 5px 0px 30px;
@@ -252,7 +252,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -266,12 +266,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 300px;
+	height: 180px;
 	background: #E0FFFF;
 	display: none;
 }
 .b5_list {
-	float: left;
+	text-align: left;
 }
 .b5_list input{
 	margin: 30px 5px 0px 30px;
@@ -304,7 +304,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -318,12 +318,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 120px;
+	height: 300px;
 	background: #E0FFFF;
 	display: none;
 }
 .b6_list {
-	float: left;
+	text-align: left;
 }
 .b6_list input{
 	margin: 30px 5px 0px 30px;
@@ -356,7 +356,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -370,12 +370,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 70px;
+	height: 120px;
 	background: #E0FFFF;
 	display: none;
 }
 .b7_list {
-	float: left;
+	text-align: left;
 }
 .b7_list input{
 	margin: 30px 5px 0px 30px;
@@ -408,7 +408,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -427,7 +427,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	display: none;
 }
 .b8_list {
-	float: left;
+	text-align: left;
 }
 .b8_list input{
 	margin: 30px 5px 0px 30px;
@@ -460,7 +460,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -474,12 +474,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 70px;
+	height: 120px;
 	background: #E0FFFF;
 	display: none;
 }
 .b9_list {
-	float: left;
+	text-align: left;
 }
 .b9_list input{
 	margin: 30px 5px 0px 30px;
@@ -512,7 +512,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -531,7 +531,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	display: none;
 }
 .b10_list {
-	float: left;
+	text-align: left;
 }
 .b10_list input{
 	margin: 30px 5px 0px 30px;
@@ -564,7 +564,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -578,12 +578,12 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 70px;
+	height: 120px;
 	background: #E0FFFF;
 	display: none;
 }
 .b11_list {
-	float: left;
+	text-align: left;
 }
 .b11_list input{
 	margin: 30px 5px 0px 30px;
@@ -616,7 +616,7 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	box-sizing: border-box;
 	outline: 0;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 15px;
 	padding: 0px 10px;
 	text-align: left;
 	line-height: 1;
@@ -630,17 +630,173 @@ h1 {text-align: center; margin-top: 30px; font-size: 80px; font-weight: bold;}
 	margin: 20px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	height: 220px;
+	height: 120px;
 	background: #E0FFFF;
 	display: none;
 }
 .b12_list {
-	float: left;
+	text-align: left;
 }
 .b12_list input{
 	margin: 30px 5px 0px 30px;
 }
 .b12_list input:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.b13{
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: #20acd5;
+}
+.b13:hover, .b13close:hover {
+	cursor: pointer;
+}
+.b13close {
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: blue;
+  }
+.b13_board{
+	font-family: '돋움';
+	font-size: 13px;
+	text-align: center;
+	width: 1000px;
+	margin: 20px auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height: 540px;
+	background: #E0FFFF;
+	display: none;
+}
+.b13_list {
+	text-align: left;
+}
+.b13_list input{
+	margin: 30px 5px 0px 30px;
+}
+.b13_list input:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.b14{
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: #20acd5;
+}
+.b14:hover, .b14close:hover {
+	cursor: pointer;
+}
+.b14close {
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: blue;
+  }
+.b14_board{
+	font-family: '돋움';
+	font-size: 13px;
+	text-align: center;
+	width: 1000px;
+	margin: 20px auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height: 440px;
+	background: #E0FFFF;
+	display: none;
+}
+.b14_list {
+	text-align: left;
+}
+.b14_list input{
+	margin: 30px 5px 0px 30px;
+}
+.b14_list input:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.b15{
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: #20acd5;
+}
+.b15:hover, .b15close:hover {
+	cursor: pointer;
+}
+.b15close {
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: blue;
+  }
+.b15_board{
+	font-family: '돋움';
+	font-size: 13px;
+	text-align: center;
+	width: 1000px;
+	margin: 20px auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height: 440px;
+	background: #E0FFFF;
+	display: none;
+}
+.b15_list {
+	text-align: left;
+}
+.b15_list input{
+	margin: 30px 5px 0px 30px;
+}
+.b15_list input:hover {
 	text-decoration:underline;
 	cursor:pointer;
 }
