@@ -30,7 +30,7 @@
 			<span class="b12">채소류</span>
 		</div>
 		<div class="b1_board">
-			<div class="b1_list">
+			<div class="b1_list" id="b1">
 				<input type="checkbox" name="b1_list" value="1">재료1
 				<input type="checkbox" name="b1_list" value="2">재료2
 				<input type="checkbox" name="b1_list" value="3">재료3
@@ -60,9 +60,9 @@
 			</div>
 		</div>
 		<div class="b3_board">
-			<div class="b3_list">
-				<input type="checkbox" name="b3_list" value="1">3재료1
-				<input type="checkbox" name="b3_list" value="2">3재료2
+			<div class="b3_list" id="b3">
+				<!-- <input type="checkbox" name="b3_list" value="1">3재료1
+				<input type="checkbox" name="b3_list" value="2">3재료2 -->
 			</div>
 		</div>
 		<div class="b4_board">
@@ -348,7 +348,8 @@
 		$(document).ready(function(){
 			$('.b1').toggle(function(){
 					$('.b1').addClass('b1close').removeClass('b1');
-					$('.b1_board').css('display', 'block');},
+					$('.b1_board').css('display', 'block');
+					catListing(알류)},
 					function(){
 					$('.b1close').addClass('b1').removeClass('b1close');  
 					$('.b1_board').css('display', 'none');

@@ -1,26 +1,12 @@
-from flask import Flask, render_template, request, jsonify
-
-# 몽고디비에서 ObjectId 객체를 사용하기 위해서 아래 임포트
-from bson import ObjectId
-
+from flask import Flask, render_template, request ,jsonify
+import threading
 app = Flask(__name__)
 
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
 client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
 db = client.recipe
-
-
 @app.route('/') # 페이지 연결: 루트페이지
 def home():
-    """
-    index.html 페이지 연결.
-    """               
-    return render_template('index.html')
-
-
-@app.route('/yuna') # 페이지 연결: 윤아페이지
-
-def yun_render():
     """
     index.html 페이지 연결.
     """               
@@ -48,6 +34,9 @@ def chan_get():
     ingredi = request.args.get("ingredi")
     return ingredi
 
+    return jsonify({'result':'success', 'recipe':list1})
 
 if __name__ == '__main__':
+
   app.run('0.0.0.0', port=5000, debug = True)
+
