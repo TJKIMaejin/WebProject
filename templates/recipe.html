@@ -55,6 +55,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+        
         let now_query = document.location.href.split("?")[1];
         /*  현재 /yuna에서 쿼리 가져오기 */
         /* now_query가 _id에 대한 쿼리가 아닌 경우 에러핸들링 필요할거같은데.... 필요할까?
@@ -76,7 +77,6 @@
                         /* title 변경 */
                         $("#title").html('');
                         $("#title").append("<h1>" + response["info"]["title"] + "</h1>");
-                        $("#title").append(response["info"]["title"].length);
 
                         /* 이미지 변경 */
                         $("#div_img").html('');
@@ -88,22 +88,17 @@
                         // "&"로 parsing함에 주의
                         let ingredi_parsed = response["info"]["recipe_main"].split("&");
 
-                        for (var i in ingredi_parsed){
-                            for (var j in i){
-                                console.log("ingredi_parsed[i]: "+ingredi_parsed[i]);
-                            }
-                        }
 
                         for (var elmt in ingredi_parsed) {
                             //$("#ingredients").append("<p>"+ingredi_parsed[elmt]+"<\p>"); // 하이퍼링크로 연결했는데 여백까지 밑줄 --> 링크 사이 간격 어떻게 예쁘게??
     
                             var theIngredi = ingredi_parsed[elmt]; // 특정 재료 방문: 다진마늘, 돼지목살 등등
                             
-
+                            theIngredi = theIngredi.trim(); // 문자열 앞 뒤 공백 제거        
+                            
                             // 일단 하이퍼링크 걸기
-
                             $("#ingredients").append("<A href = \"/chan?ingredi=" + encodeURIComponent(theIngredi) + "\" target = blank>"
-                                + theIngredi + "</A><p></p>");
+                                + theIngredi + "</A>&nbsp</span>");
 
                         }
 
@@ -131,7 +126,7 @@
             alert("틀린 쿼리!");
             // 빈 템플릿 연결해야하나...?
         }
-
+        
     </script>
 </head>
 
@@ -141,11 +136,15 @@
         <div class="info">
             <h1 id="title">제목</h1>
             <h3 id="ingredients">재료 </h3>
-        </div>
+        
+        
         <ul class="list-group" id=steps>
             <li class="list-group-item disabled" aria-disabled="true" id=steps>
                 <h3 id=step>step</h3> <!-- 스텝은 뭐하는거야?.? -->
             </li>
+        </ul>
+
+    </div>
 
 </body>
 
