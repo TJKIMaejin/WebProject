@@ -31,33 +31,14 @@
 		</div>
 		<div class="b1_board">
 			<div class="b1_list" id="b1">
-				<input type="checkbox" name="b1_list" value="1">재료1
-				<input type="checkbox" name="b1_list" value="2">재료2
-				<input type="checkbox" name="b1_list" value="3">재료3
-				<input type="checkbox" name="b1_list" value="4">재료4
+				
 			</div>
 		</div>
 		<div class="b2_board">
-			<div class="b2_list">
-				<input type="checkbox" name="b2_list" value="1">2재료1
-				<input type="checkbox" name="b2_list" value="2">2재료2
-				<input type="checkbox" name="b2_list" value="3">재료3
-				<input type="checkbox" name="b2_list" value="4">재료4
-				<input type="checkbox" name="b2_list" value="5">재료5
-				<input type="checkbox" name="b2_list" value="6">재료6
-				<input type="checkbox" name="b2_list" value="7">재료7
-				<input type="checkbox" name="b2_list" value="8">재료8
-				<input type="checkbox" name="b2_list" value="9">재료9
-				<input type="checkbox" name="b2_list" value="10">재료10
+			<div class="b2_list" id="b2">
+				
 			</div>
-			<div class="b2_list">
-				<input type="checkbox" name="b2_list" value="11">재료11
-				<input type="checkbox" name="b2_list" value="12">재료12
-				<input type="checkbox" name="b2_list" value="13">재료13
-				<input type="checkbox" name="b2_list" value="14">재료14
-				<input type="checkbox" name="b2_list" value="15">재료15
-				<input type="checkbox" name="b2_list" value="16">재료16
-			</div>
+			
 		</div>
 		<div class="b3_board">
 			<div class="b3_list" id="b3">
@@ -66,7 +47,7 @@
 			</div>
 		</div>
 		<div class="b4_board">
-			<div class="b4_list">
+			<div class="b4_list" id="b4">
 				<input type="checkbox" name="b4_list" value="1">4재료1
 				<input type="checkbox" name="b4_list" value="2">4재료2
 				<input type="checkbox" name="b4_list" value="3">재료3
@@ -78,14 +59,14 @@
 				<input type="checkbox" name="b4_list" value="9">재료9
 				<input type="checkbox" name="b4_list" value="10">재료10
 			</div>
-			<div class="b4_list">
+			<div class="b4_list" id="b4">
 				<input type="checkbox" name="b4_list" value="11">재료11
 				<input type="checkbox" name="b4_list" value="12">재료12
 				<input type="checkbox" name="b4_list" value="13">재료13
 			</div>
 		</div>
 		<div class="b5_board">
-			<div class="b5_list">
+			<div class="b5_list" id="b5">
 				<input type="checkbox" name="b5_list" value="1">5재료1
 				<input type="checkbox" name="b5_list" value="2">5재료2
 				<input type="checkbox" name="b5_list" value="3">재료3
@@ -97,7 +78,7 @@
 				<input type="checkbox" name="b5_list" value="9">재료9
 				<input type="checkbox" name="b5_list" value="10">재료10
 			</div>
-			<div class="b5_list">
+			<div class="b5_list" id="b5">
 				<input type="checkbox" name="b5_list" value="11">재료11
 				<input type="checkbox" name="b5_list" value="12">재료12
 				<input type="checkbox" name="b5_list" value="13">재료13
@@ -109,7 +90,7 @@
 				<input type="checkbox" name="b5_list" value="19">재료19
 				<input type="checkbox" name="b5_list" value="20">재료20
 			</div>
-			<div class="b5_list">
+			<div class="b5_list" id="b5">
 				<input type="checkbox" name="b5_list" value="21">재료11
 				<input type="checkbox" name="b5_list" value="22">재료12
 				<input type="checkbox" name="b5_list" value="23">재료13
@@ -121,7 +102,7 @@
 				<input type="checkbox" name="b5_list" value="29">재료19
 				<input type="checkbox" name="b5_list" value="30">재료20
 			</div>
-			<div class="b5_list">
+			<div class="b5_list" id="b5">
 				<input type="checkbox" name="b5_list" value="31">재료11
 				<input type="checkbox" name="b5_list" value="32">재료12
 				<input type="checkbox" name="b5_list" value="33">재료13
@@ -349,7 +330,9 @@
 			$('.b1').toggle(function(){
 					$('.b1').addClass('b1close').removeClass('b1');
 					$('.b1_board').css('display', 'block');
-					catListing(알류)},
+					catListing('알류')
+					
+					},
 					function(){
 					$('.b1close').addClass('b1').removeClass('b1close');  
 					$('.b1_board').css('display', 'none');
@@ -358,7 +341,10 @@
 		$(document).ready(function(){
 			$('.b2').toggle(function(){
 					$('.b2').addClass('b2close').removeClass('b2');
-					$('.b2_board').css('display', 'block');},
+					$('.b2_board').css('display', 'block');
+					catListing('유제품');
+					
+					},
 					function(){
 					$('.b2close').addClass('b2').removeClass('b2close');  
 					$('.b2_board').css('display', 'none');
@@ -367,7 +353,8 @@
 		$(document).ready(function(){
 			$('.b3').toggle(function(){
 					$('.b3').addClass('b3close').removeClass('b3');
-					$('.b3_board').css('display', 'block');},
+					$('.b3_board').css('display', 'block');
+					catListing('유지류')},
 					function(){
 					$('.b3close').addClass('b3').removeClass('b3close');  
 					$('.b3_board').css('display', 'none');
@@ -376,7 +363,8 @@
 		$(document).ready(function(){
 			$('.b4').toggle(function(){
 					$('.b4').addClass('b4close').removeClass('b4');
-					$('.b4_board').css('display', 'block');},
+					$('.b4_board').css('display', 'block');
+					catListing('견과류')},
 					function(){
 					$('.b4close').addClass('b4').removeClass('b4close');  
 					$('.b4_board').css('display', 'none');
@@ -385,7 +373,8 @@
 		$(document).ready(function(){
 			$('.b5').toggle(function(){
 					$('.b5').addClass('b5close').removeClass('b5');
-					$('.b5_board').css('display', 'block');},
+					$('.b5_board').css('display', 'block');
+					catListing('과일류')},
 					function(){
 					$('.b5close').addClass('b5').removeClass('b5close');  
 					$('.b5_board').css('display', 'none');
@@ -394,7 +383,8 @@
 		$(document).ready(function(){
 			$('.b6').toggle(function(){
 					$('.b6').addClass('b6close').removeClass('b6');
-					$('.b6_board').css('display', 'block');},
+					$('.b6_board').css('display', 'block');
+					catListing('육류')},
 					function(){
 					$('.b6close').addClass('b6').removeClass('b6close');  
 					$('.b6_board').css('display', 'none');
@@ -403,7 +393,8 @@
 		$(document).ready(function(){
 			$('.b7').toggle(function(){
 					$('.b7').addClass('b7close').removeClass('b7');
-					$('.b7_board').css('display', 'block');},
+					$('.b7_board').css('display', 'block');
+					catListing('콩류')},
 					function(){
 					$('.b7close').addClass('b7').removeClass('b7close');  
 					$('.b7_board').css('display', 'none');
@@ -412,7 +403,8 @@
 		$(document).ready(function(){
 			$('.b8').toggle(function(){
 					$('.b8').addClass('b8close').removeClass('b8');
-					$('.b8_board').css('display', 'block');},
+					$('.b8_board').css('display', 'block');
+					catListing('곡류')},
 					function(){
 					$('.b8close').addClass('b8').removeClass('b8close');  
 					$('.b8_board').css('display', 'none');
@@ -421,7 +413,8 @@
 		$(document).ready(function(){
 			$('.b9').toggle(function(){
 					$('.b9').addClass('b9close').removeClass('b9');
-					$('.b9_board').css('display', 'block');},
+					$('.b9_board').css('display', 'block');
+					catListing('해조류')},
 					function(){
 					$('.b9close').addClass('b9').removeClass('b9close');  
 					$('.b9_board').css('display', 'none');
@@ -430,7 +423,8 @@
 		$(document).ready(function(){
 			$('.b10').toggle(function(){
 					$('.b10').addClass('b10close').removeClass('b10');
-					$('.b10_board').css('display', 'block');},
+					$('.b10_board').css('display', 'block');
+					catListing('어패류')},
 					function(){
 					$('.b10close').addClass('b10').removeClass('b10close');  
 					$('.b10_board').css('display', 'none');
@@ -439,7 +433,8 @@
 		$(document).ready(function(){
 			$('.b11').toggle(function(){
 					$('.b11').addClass('b11close').removeClass('b11');
-					$('.b11_board').css('display', 'block');},
+					$('.b11_board').css('display', 'block');
+					catListing('버섯류')},
 					function(){
 					$('.b11close').addClass('b11').removeClass('b11close');  
 					$('.b11_board').css('display', 'none');
@@ -448,7 +443,8 @@
 		$(document).ready(function(){
 			$('.b12').toggle(function(){
 					$('.b12').addClass('b12close').removeClass('b12');
-					$('.b12_board').css('display', 'block');},
+					$('.b12_board').css('display', 'block');
+					catListing('채소류')},
 					function(){
 					$('.b12close').addClass('b12').removeClass('b12close');  
 					$('.b12_board').css('display', 'none');
