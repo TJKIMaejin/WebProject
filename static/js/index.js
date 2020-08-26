@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
   listing();
-  catListing();
+  
 
 });
 
@@ -29,6 +29,36 @@ function listing() {
 
 }
 
+function check() {
+  alert('sfjdisfjis');
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  
+  if (checkBox == null){
+    return
+   }
+
+  if (checkBox.checked == true){
+    $(function(){
+      $("input:checkbox[id='계란']").prop("checked", alert('세일'));
+  })
+    text.style.display = "block";
+    
+  } else {
+    text.style.display = "none";
+  }
+  }
+
+  // $("input:checkbox[id='계란']").prop("checked", alert('세일'));
+
+
+  
+
+
 
 
 
@@ -42,9 +72,11 @@ function catListing(Val) {
 
     for (let i = 0; i < gus.length; i++) {
       temp_html +=
+        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
         '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
+        // "<input type=" + "\"checkbox\" " + "name=" +Val+ " value="+i+1+">"+gus[i]
   
-    }
+      }
   
     $('#b1').empty()
     $('#b1').append(temp_html)
@@ -283,4 +315,6 @@ function catListing(Val) {
     $('#b15').append(temp_html)
   }
 
+
 }
+
