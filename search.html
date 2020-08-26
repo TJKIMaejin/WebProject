@@ -30,7 +30,7 @@
 </head>
 <body>
         <h1>오늘 뭐 먹지?</h1>
-        <div class="search_book">
+        <div class="search_food">
         <fieldset class="srch">
                 <legend>검색영역</legend>
                 <input type="text" name="query" id="query" accesskey="s" title="검색어" class="keyword" value="전에 클릭했던 재료">
@@ -61,69 +61,13 @@
                         </tr>
                         <tr class="__template" style="display: none">
                                 <td><img src="#image#"  width="50px" height="70px" /></td>
-                                <td>#name#</td>
+                                <td>#title#</td>
                                 <td>#price#</td>
                         </tr>
                 </tbody>
         </table>
-        </div>
-        <input type="button" onClick="window.close()" value= <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
-                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
-              </svg> >
 
-        <script type="text/javascript">
-                function 
         </script>
 </body>
 
 </html>
-
-<!-- <script type="text/javascript">
-        $('#search').click( function() {
-                if($('#query').val() == ''){
-                        alert('검색어를 입력해 주세요');
-                        $('#query').focus();
-                }else{
-                        callAjax($('#query').val());
-                        $('#name').val("");
-                }
-        });
-
-        function callAjax(query) {
-                $.ajax({
-                        url:'foodshop.java',
-                        dataType:'json',
-                        type:'POST',
-                        data:{'query':query},
-                        success:function(result){
-                                $('#result').html('');
-                                if(result['channel']['display'] > 0){
-                                        $('.__oldlist').remove();
-                                        for(var i in result['channel']['item']){
-                                                var item = result['channel']['item'][i];
-                                                $html = template('__template', item);
-                                                $html.addClass('__oldlist');
-                                                $('#list').append($html);
-                                                $('.__oldlist').show();
-                                        }
-                                        
-                                }else{
-                                        $('#result').html('');
-                                        $('#result').append("데이터가 없거나 정상적으로 로딩 되지 않았습니다.");
-                                }
-                        }
-                });
-        };
-
-        function template(template_id, params){
-                var c = $('.' + template_id).clone();
-                var html = $('<div>').append(c).html();
-                for(var key in params){
-                        html = html.replace(new RegExp('#' + key + '#', 'g'), params[key]);
-                }
-                html = html.replace(/#template_([^#]*)#/g, '$1');
-                var $html = $(html).removeClass(template_id).removeClass('__template');
-                return $html;
-        }
-</script> -->
