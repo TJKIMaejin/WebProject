@@ -27,9 +27,7 @@ for a in i:
     except:
         pass
 
-        # if img_tag is not None:
-        #     print(img_tag)
-# print(page)
+
 main_img= []
 main_step=[]
 main_title=[]
@@ -84,9 +82,9 @@ for p in page:
     except:
         pass
 k = range(0, len(page))
-#
-# print(main_recipe)
-# print(main_recipe2)
+
+
+
 
 
 
@@ -97,15 +95,9 @@ for i in length:
 print(bus)
 for i in k:
     doc = {
-        'step': main_step[i], 'title': main_title[i], 'recipe1': main_recipe[i], 'recipe2': main_recipe2[i],'recipe_main':bus[i] ,'img': main_img[i]
+        'step': main_step[i], 'title': main_title[i], 'recipe1': main_recipe[i], 'recipe2': main_recipe2[i],'recipe_main':bus[i],'img': main_img[i]
     }
     db.recipe.insert_one(doc)
 
 
 
-# print(main_img)
-# print(main_step)
-# print(main_title)
-# print(main_recipe)
-# print(main_recipe2)
-#
