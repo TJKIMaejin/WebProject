@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- 구글폰트 -->
+	<link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+		$('#exampleModal').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var recipient = button.data('whatever') // Extract info from data-* attributes
+	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	var modal = $(this)
+	modal.find('.modal-title').text('New message to ' + recipient)
+	modal.find('.modal-body input').val(recipient)
+	})
+	</script>
+	<style type="text/css">
+	*	{
+			font-family: 'Stylish', sans-serif;
+		}
+		.modal-content {
+			width: 500px;
+			margin: auto;
+		}
+		.img {
+			background-image: url('https://www.conscious-skincare.com/wp-content/uploads/2016/02/glc-candle-lit-with-new-gift-box.jpg');
+			background-size: cover;
+			background-position: center;
+			width: 300px;
+			height: 200px
+			}	
+	.info{
+		margin-top: 20px;
+		margin-bottom: 20px;
+	</style>
+	<!-- 밑 style 윈도우 창 -->
+	<style>
+        body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+        body,input,textarea,select,button,table{font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px}
+        img,fieldset{border:0}
+        ul,ol{list-style:none}
+        em,address{font-style:normal}
+        a{text-decoration:none}
+        a:hover,a:active,a:focus{text-decoration:underline}
+        .search_book {margin: 10px;}
+        .result{ margin: 20px;}
+        .srch{width:100%;padding:5px 0; margin: 0px 10px;}
+        .srch legend{overflow:hidden;visibility:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}
+        .srch{color:#c4c4c4;text-align:left}
+        .srch select,.srch input{margin:-1px 0 1px;font-size:12px;color:#373737;vertical-align:middle}
+        .srch .keyword{margin-left:1px;padding:2px 3px 5px;border:1px solid #b5b5b5;font-size:12px;line-height:15px}
+        .tbl_type,.tbl_type th,.tbl_type td{border:0}
+        .tbl_type{width:100%;border-bottom:2px solid #dcdcdc;font-family:Tahoma;font-size:11px;text-align:center}
+        .tbl_type caption{display:none}
+        .tbl_type th{padding:7px 0 4px;border-top:2px solid #dcdcdc;background-color:#f5f7f9;color:#666;font-family:'돋움',dotum;font-size:12px;font-weight:bold}
+        .tbl_type td{padding:6px 0 4px;border-top:1px solid #e5e5e5;color:#4c4c4c}
+    </style>
+</head>
+<body>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"> Open modal for @fat</button>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">재료</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<table cellspacing="0" border="1" summary="재료검색 API 결과" class="tbl_type">
+        					<caption>재료검색 API 결과</caption>
+                				<colgroup>
+									<col width="10%">
+									<col width="20%">
+									<col width="15%">
+									<col width="15%">
+									<col width="15%">
+									<col width="10%">
+									<col width="15%">
+                				</colgroup>
+								<thead>
+										<tr>
+										<th scope="col">재료사진</th>
+										<th scope="col">재료이름</th>
+										<th scope="col">가격</th>
+										<th scope="col">링크</th>
+										</tr>
+								</thead>
+								<tbody id="list">
+										<tr class="__oldlist" style="">
+												<td colspan="7">검색 결과가 없습니다.</td>
+										</tr>
+										<tr class="__template" style="display: none">
+												<td><img src="#image#"  width="50px" height="70px" /></td>
+												<td>#title#</td>
+												<td>#lprice#</td>
+												<td>#link#</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function template(template_id, params){
+                var c = $('.' + template_id).clone();
+                var html = $('<div>').append(c).html();
+				for(i in range (0,parmas.length))
+					for(var key in params[i]){
+                        html = html.replace(new RegExp('#' + key + '#', 'g'), params[i][key]);
+                	}
+                html = html.replace(/#template_([^#]*)#/g, '$1');
+                var $html = $(html).removeClass(template_id).removeClass('__template');
+                return $html;
+        }
+	</script>
+
+</body>
+</html>

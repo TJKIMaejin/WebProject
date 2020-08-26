@@ -2,38 +2,36 @@ import urllib.request
 import os
 import sys
 from urllib.parse import quote
-from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
-from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
- 
+import json
+
 # 네이버 api call
-def call(keyword, start):
+def call(keyword):
+#    checkstr = keyword
     encText = quote(keyword)
-    url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=10" + "&start=" + str(start) + "&sort=sim"
+    display = 10
+    url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=" + str(display) + "&start=1" + "&sort=sim"
     request = urllib.request.Request(url)
     request.add_header("X-Naver-Client-Id","oXfhI4we88tBhBs1hxY_")
     request.add_header("X-Naver-Client-Secret","mruETz2SMm")
     response = urllib.request.urlopen(request)
     rescode=response.getcode()
-    list1=[]
+#    json_really_data = []
     if(rescode == 200):
         response_body = response.read()
-        list1.append(response_body.decode('utf-8'))
-        print(response_body.decode('utf-8'))
+        middle_data = json.loads(response_body)
+        json_data = middle_data['items']
     else:
         print("Error code:"+rescode)
-    return rescode
-    return list1
+    return json_data
 
-def get10results(keyword):
-    list = []
-    for num in range(0,10):
-        list = list + call(keyword, 1)['items'] # list 안에 키값이 ’item’인 애들만 넣기
-    return list
+list=[]
+list = call("양파")
+print(list)
 
-import json
- 
-list = []
-result = get10results("양파")
 
-list = list + result
+#list = []
+#    list = json_data
+#    food_data = []
+#    for i in range (0,display) :
+#        if ( list[i]['category4'] == checkstr ) :
+#            food_data.append(list[i])
