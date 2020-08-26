@@ -1,1 +1,676 @@
 <!--태진 크롤링-->
+<html lang="en">
+
+<head>
+    <title>김태진이다</title>
+    <meta property="og:image" content="{{ url_for('static', filename='KIM.png') }}" />
+    <meta property="og:title" content="김태진" />
+
+    <meta property="og:description" content="강한 남자" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=njgmntxirn&callback=initMap"></script>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00f99d78aaf16f22c72a5dfed0e3b72d">
+    </script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <script>
+        let result;
+        var map;
+        $(document).ready(function () {
+
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = {
+                    center: new kakao.maps.LatLng(37.564214, 127.001699), // 지도의 중심좌표
+                    level: 1 // 지도의 확대 레벨
+                };
+
+            // 지도를 생성합니다    
+            map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+
+            fnCngList()
+            console.log("초기함수 실행")
+            q1()
+            // initMap()
+            makemap()
+        });
+
+        function fnCngList(Val) {
+
+
+            let temp_html = ''
+            let gus = []
+
+            if (Val == '서울') {
+                gus = ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구",
+                    "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"
+                ]
+            } else if (Val == '강원') {
+                gus = ["춘천시", "원주시", "강릉시", "동해시", "태백시", "속초시", "삼척시", "홍천군", "횡성군", "영월군", "평창군", "정선군", "철원군", "화천군",
+                    "양구군", "인재군", "고성군", "양양군"
+                ]
+            } else if (Val == '전라') {
+                gus = ["전주시", "완산구", "덕진구", "군산시", "익산시", "정읍시", "순창군", "부안군", "김제시", "목포시", "여수시", "순천시", "나주시", "광양군",
+                    "곡성군", "보성군", "헤남군", "완도군", "장성군", "무안군", "포항시", "남구", "북구", "경주시", "김천시", "안동시", "구미시", "칠곡군",
+                    "올릉군",
+                ]
+            } else if (Val == '경상') {
+                gus = ["포항시", "남구", "북구", "경주시", "김천시", "안동시", "구미시", "칠곡군", "올릉군", "창원시", "진주시", "통영시", "사천시", "김해시",
+                    "밀양시", "거제시"
+                ]
+            } else if (Val == '제주') {
+                gus = ['전체']
+            }
+
+            for (let i = 0; i < gus.length; i++) {
+                temp_html += '<option value=' + gus[i] + '>' + gus[i] + '</option>'
+            }
+
+
+            $('#inputState_select2').empty()
+            $('#inputState_select2').append(temp_html)
+
+        }
+
+
+
+
+
+
+
+        function q1() {
+            $('#cl *').remove();
+            let city = $('#inputState_select1').val();
+            let gu = $('#inputState_select2').val();
+            let media1 = $('#inputState_select3').val();
+
+
+
+            $.ajax({
+                type: "GET",
+                url: "/api/find",
+                data: {},
+
+
+
+                success: function (response) {
+
+                    let result = response
+                    let seoul = result['seoul']
+                    let jeolla = result['Jeolla']
+                    let gyeongsang = result['gyeongsang']
+                    let gangwon = result['Gangwon']
+
+
+
+
+                    if (city == '서울') {
+
+
+
+                        for (let i = 0; i < seoul.length; i++) {
+                            let name = seoul[i]['name'];
+                            let dish = seoul[i]['dish']
+                            let address = seoul[i]['add']
+                            let media = seoul[i]['media']
+                            let url = seoul[i]['src']
+                            let x = seoul[i]['X']
+                            let y = seoul[i]['Y']
+
+                            if (address.indexOf(gu) !== -1) {
+                                if (media.indexOf(media1) !== -1) {
+
+
+                                    let temp_html = '<div id="wrap_card">\
+                              <div class="card mb-3"  id ="card1">\
+                              <div class="row no-gutters">\
+                              <div class="col-md-4">\
+                              <img src="' + url + '" class="card-img" alt="..." >\
+                              </div>\
+                              <div class="col-md-8">\
+                              <div class="card-body">\
+                              <h5 class="card-title">' + name + '</h5>\
+                              <p class="card-text">' + address + '</p>\
+                              <p class="card-text">' + dish + '</p>\
+                              <p class="card-text"><small>' + media + '</small></p>\
+                              <a href="#" onclick="panTo(' + x + ',' + y + ')" class="btn btn-primary">지도 보자</a>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              '
+                                    $('#cl').append(temp_html)
+
+
+                                }
+
+                            }
+
+
+                        }
+                    } else if (city == '전라') {
+
+
+
+                        for (let i = 0; i < jeolla.length; i++) {
+                            let name = jeolla[i]['name'];
+                            let dish = jeolla[i]['dish']
+                            let address = jeolla[i]['add']
+                            let media = jeolla[i]['media']
+                            let url = jeolla[i]['src']
+
+                            if (address.indexOf(gu) !== -1) {
+                                if (media.indexOf(media1) !== -1) {
+
+                                    let temp_html = '<div class="row no-gutters">\
+                              <img src="' + url + '"...">\
+                              </div>\
+                              <div class="col-8">\
+                              <div class="card-body">\
+                              <h5 class="card-title">' + name + '</h5>\
+                              <p>' + address + '</p>\
+                              <p>' + media + '</p>\
+                              <a href=https://www.google.com/maps/search/' + name + '/ class="btn btn-primary">지도 보자</a>\
+                              </div>\
+                              </div>\
+                              </div>'
+                                    $('#cl').append(temp_html)
+
+
+                                }
+
+                            }
+
+
+                        }
+                    } else if (city == '경상') {
+
+
+
+                        for (let i = 0; i < gyeongsang.length; i++) {
+                            let name = gyeongsang[i]['name'];
+                            let dish = gyeongsang[i]['dish']
+                            let address = gyeongsang[i]['add']
+                            let media = gyeongsang[i]['media']
+                            let url = gyeongsang[i]['src']
+
+                            if (address.indexOf(gu) !== -1) {
+                                if (media.indexOf(media1) !== -1) {
+
+                                    let temp_html = '<div class="row no-gutters">\
+                              <img src="' + url + '"...">\
+                              </div>\
+                              <div class="col-8">\
+                              <div class="card-body" style="width">\
+                              <h5 class="card-title">' + name + '</h5>\
+                              <p>' + address + '</p>\
+                              <p>' + media + '</p>\
+                              <a href=https://www.google.com/maps/search/' + name + '/ class="btn btn-primary">지도 보자</a>\
+                              </div>\
+                              </div>\
+                              </div>'
+                                    $('#cl').append(temp_html)
+
+
+
+                                }
+
+                            }
+
+
+                        }
+                    } else if (city == '강원') {
+
+
+
+                        for (let i = 0; i < gangwon.length; i++) {
+                            let name = gangwon[i]['name'];
+                            let dish = gangwon[i]['dish']
+                            let address = gangwon[i]['add']
+                            let media = gangwon[i]['media']
+                            let url = gangwon[i]['src']
+
+                            if (address.indexOf(gu) !== -1) {
+                                if (media.indexOf(media1) !== -1) {
+
+                                    let temp_html = '   <div id="wrap_card">\
+                              <div class="card mb-3" style="width: 774px; height: 243px;"  id ="card1">\
+                              <div class="row no-gutters">\
+                              <div class="col-md-4">\
+                              <img src="' + url + '" class="card-img" alt="...">\
+                              </div>\
+                              <div class="col-md-8">\
+                              <div class="card-body">\
+                              <h5 class="card-title">' + name + '</h5>\
+                              <p class="card-text">' + address + '</p>\
+                              <p class="card-text"><small>' + media + '</small></p>\
+                              <a href="#" onclick="panTo(' + x + ',' + y + ')" class="btn btn-primary">지도 보자</a>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              </div>\
+                              '
+                                    $('#cl').append(temp_html)
+
+
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+
+                }
+
+            })
+        }
+
+
+        function makemap() {
+
+
+
+            // let city=$('#inputState_select1').val();
+            // let gu = $('#inputState_select2').val();
+            // let media1 =$('#inputState_select3').val();
+
+
+
+
+
+            console.log("여기가 두번쨰")
+            $.ajax({
+                type: "GET",
+                url: "/api/find",
+                data: {},
+                success: function (response) {
+
+                    let result = response
+                    let seoul = result['seoul']
+                    let jeolla = result['Jeolla']
+                    let gyeongsang = result['gyeongsang']
+                    let gangwon = result['Gangwon']
+
+
+                    for (let i = 0; i < seoul.length; i++) {
+                        let name = seoul[i]['name']
+                        let dish = seoul[i]['dish']
+                        let address = seoul[i]['add']
+                        let media = seoul[i]['media']
+                        let url = seoul[i]['src']
+                        let X = seoul[i]['X']
+                        let Y = seoul[i]['Y']
+
+
+
+                        // 정상적으로 검색이 완료됐으면 
+
+
+                        var coords = new kakao.maps.LatLng(X, Y);
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: coords
+                        });
+                        var content = '<div class="wrap">' +
+                            '    <div class="info">' +
+                            '        <div class="title">' +
+                            '            ' + name + '' +
+                            '            <div class="close" ' +
+                            'onclick="closeOverlay()" title="닫기"></div>' +
+                            '        </div>' +
+                            '        <div class="body">' +
+                            '            <div class="img">' +
+                            '                <img src="' + url + '" width="73" height="70">' +
+                            '           </div>' +
+                            '            <div class="desc">' +
+                            '                <div class="ellipsis">' + address + '</div>' +
+                            '                <div class="jibun ellipsis">' + media + '</div>' +
+                            '                <div><a href="https://www.google.co.kr/maps/search/' + name +
+                            address + '" target="_blank" class="link">홈페이지</a></div>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '    </div>' +
+                            '</div>';
+
+                        // 인포윈도우로 장소에 대한 설명을 표시합니다
+                        var overlay = new kakao.maps.CustomOverlay({
+                            content: content,
+                            map: map,
+                            position: marker.getPosition()
+                        });
+
+
+                        kakao.maps.event.addListener(marker, 'click', function () {
+                            overlay.setMap(map);
+                        });
+
+
+                        marker.setMap(map);
+
+                        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+
+
+                    };
+                }
+
+            })
+
+
+        };
+
+
+
+
+
+
+        function q2() {
+            $('cl').remove()
+        }
+
+        function panTo(x, y) {
+            // 이동할 위도 경도 위치를 생성합니다 
+            var moveLatLon = new kakao.maps.LatLng(x, y);
+
+            // 지도 중심을 부드럽게 이동시킵니다
+            // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+            map.panTo(moveLatLon);
+        }
+
+        function closeOverlay() {
+            overlay.setMap(null);
+        }
+    </script>
+    <style>
+        .wrap {
+            position: absolute;
+            left: 0;
+            bottom: 40px;
+            width: 288px;
+            height: 132px;
+            margin-left: -144px;
+            text-align: left;
+            overflow: hidden;
+            font-size: 12px;
+            font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+            line-height: 1.5;
+        }
+
+        .wrap * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap .info {
+            width: 286px;
+            height: 120px;
+            border-radius: 5px;
+            border-bottom: 2px solid #ccc;
+            border-right: 1px solid #ccc;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .wrap .info:nth-child(1) {
+            border: 0;
+            box-shadow: 0px 1px 2px #888;
+        }
+
+        .info .title {
+            padding: 5px 0 0 10px;
+            height: 30px;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .info .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+            width: 17px;
+            height: 17px;
+            background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+        }
+
+        .info .close:hover {
+            cursor: pointer;
+        }
+
+        .info .body {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info .desc {
+            position: relative;
+            margin: 13px 0 0 90px;
+            height: 75px;
+        }
+
+        .desc .ellipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .desc .jibun {
+            font-size: 11px;
+            color: #888;
+            margin-top: -2px;
+        }
+
+        .info .img {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            width: 73px;
+            height: 71px;
+            border: 1px solid #ddd;
+            color: #888;
+            overflow: hidden;
+        }
+
+        .info:after {
+            content: '';
+            position: absolute;
+            margin-left: -12px;
+            left: 50%;
+            bottom: 0;
+            width: 22px;
+            height: 12px;
+            background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+        }
+
+        .info .link {
+            color: #5085BB;
+        }
+    </style>
+
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /* Style the header */
+
+
+        /* Style the top navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style the topnav links */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 40px;
+        }
+
+        /* Left and right column */
+
+        /* Middle column */
+        .column.middle {
+
+            width: 60%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .B #row1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 10px 10px;
+
+            display: flex;
+            margin-left: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+
+            .column.side,
+            .column.middle {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column side">
+            <div class="column-side" id="wrap2">
+                <div class="form-group col-md-4">
+                    <label for="inputState">도시</label>
+                    <select id="inputState_select1" class="form-control" onchange="fnCngList(this.value);"
+                        style="width:300px">
+                        <option value="">Choose...</option>
+                        <option value="서울">서울</option>
+                        <option value="강원">강원</option>
+                        <option value="전라">전라</option>
+                        <option value="경상">경상</option>
+                        <option value="충청">충청</option>
+                        <option value="제주">제주</option>
+
+
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">구/시/군</label>
+                <select id="inputState_select2" class="form-control" style="width:300px">
+                    <option value="">Choose...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">방송</label>
+                <select id="inputState_select3" class="form-control" style="width:300px">
+
+                    <option value="수요미식회">수요미식회</option>
+                    <option value="맛있는 녀석들">맛있는 녀석들</option>
+                    <option value="백종원 3대 천왕">백종원 3대 천왕</option>
+                    <option value="식객">식객</option>
+                    <option value="오래된 한식당 100">오래된 한식당 100</option>
+                    <option value="테이스티로드">테이스티로드</option>
+                    <option value="생생 정보통">생생 정보통</option>
+                    <option value="미쉐린가이드 2018">미쉐린가이드 2018</option>
+
+
+                </select>
+            </div>
+            <div class="BTN1" id="bt1">
+                <p class="PB1">
+                    <button type="button" class="btn btn-primary" onclick="q1()"> 찾아보자</button>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="column middle">
+
+            <div id="map" style="width:100%;height:500px;"></div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+</body>
+
+</div>
+<div class="row1">
+    <div class="row1" id="cl">
+
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

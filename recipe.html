@@ -1,15 +1,19 @@
-<!--윤아-->
+<input type="checkbox" id="myCheck" onclick="myFunction()">
 
-<!DOCTYPE html>
-<html>
+<p id="text" style="display:none">Checkbox is CHECKED!</p>
 
-<head>
-    <meta charset="UTF-8">
-    <title>레시피 상세설명</title>
-</head>
+<script>
+    function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
 
-<body>
-
-</body>
-
-</html>
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+</script>
