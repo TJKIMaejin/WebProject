@@ -64,10 +64,13 @@ function check() {
 
   // $( "#계란" ).on( "click", checks());
 
+
+  // String [] value = request.getParameterValues("알류");
+
   function opens() 
   {
     console.log('opens함수')
-    $("input:checkbox[id='계란']").prop("checked", console.log('세일'));
+    $("input:checkbox[id='계란']").attr("checked", console.log('세일'));
     console.log('성공')
   }
 
@@ -102,7 +105,7 @@ function catListing(Val) {
 
       }
     
-      opens();
+       opens();
     $('#b1').empty()
     $('#b1').append(temp_html)
     

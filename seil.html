@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index.html</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/cs.css">
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/cs.css') }}"> -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+			$('.b1').toggle(function(){
+				
+					
+					function(){
+                        $('.b1').addClass('b1close').removeClass('b1');
+					$('.b1_board').css('display', 'block');
+                    catListing('알류');
+                    console.log('토글성공')}
+				});
+        });
+        
+        
+
+        function catListing(Val) {
+
+            let temp_html = ''
+            let gus = []
+
+            if (Val == '알류') {
+                gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
+
+                for (let i = 0; i < gus.length; i++) {
+                    temp_html += '<input type="checkbox" name="' + Val + '" value="' + gus[i] + '" id="' + gus[i] +
+                        '" >' + gus[i] + ''
+
+
+                }
+                $('#b1').empty()
+                $('#b1').append(temp_html)
+                opens();
+                
+
+            }
+        }
+        function opens() {
+            console.log('opens함수')
+            $("input:checkbox[id='계란']").attr("checked", console.log('세일'));
+            console.log('성공')
+        }
+    </script>
+
+    <style>
+        /* .b1{
+	display: inline;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 0px 10px;
+	text-align: left;
+	line-height: 1;
+	color: #20acd5;
+} */
+    </style>
+	
+
+</head>
+
+<body>
+    <div class="s_category">
+        <span class="s_category_tit">Category All</span>
+        <span class="b1">알류</span>
+    </div>
+
+<div class="b1_board">
+    <div class="b1_list" id="b1">
+        
+    </div>
+</div>
+
+</body>
