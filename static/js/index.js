@@ -3,9 +3,12 @@
 $(document).ready(function () {
 
   listing();
-  
+ 
+
 
 });
+
+let open;
 
 function listing() {
   $.ajax({
@@ -29,6 +32,8 @@ function listing() {
 
 }
 
+
+
 function check() {
   // Get the checkbox
   var checkBox = document.getElementById("myCheck");
@@ -36,15 +41,16 @@ function check() {
   var text = document.getElementById("text");
 
   // If the checkbox is checked, display the output text
-  
-  if (checkBox == null){
-    return;
-   }
+  console.log(text);
+
+  // if (checkBox == null){
+  //   return;
+  //  }
 
   if (checkBox.checked == true){
     alert('sfjdisfjis');
     $(function(){
-      $("input:checkbox[gus[0]]").prop("checked", alert('세일'));
+      $(".yUna").prop("checked", alert('세일'));
   })
     text.style.display = "block";
     
@@ -56,11 +62,25 @@ function check() {
   // $("input:checkbox[id='계란']").prop("checked", alert('세일'));
 
 
-  
+  // $( "#계란" ).on( "click", checks());
 
+  function opens() 
+  {
+    console.log('opens함수')
+    $("input:checkbox[id='계란']").prop("checked", console.log('세일'));
+    console.log('성공')
+  }
 
-
-
+  // function showcards() {
+  //   igts = []
+  //   $('#알류').each(function () {
+  //     let igt = $(this).val()
+  //     igts.push(igt)
+  //   })
+    
+    
+  //   console.log('success')
+  // } 
 
 function catListing(Val) {
 
@@ -69,15 +89,20 @@ function catListing(Val) {
   
   if (Val == '알류') {
     gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
-
-    for (let i = 0; i < gus.length; i++) {
+    temp_html += '<input type="checkbox" name="' + Val + '" value="' + gus[0] + '" id="' + "yUna" + '" >' + gus[0] + '' 
+    for (let i = 1; i < gus.length; i++) {
       temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
+        
+        '<input type="checkbox" name="' + Val + '" value="' + gus[i] + '" id="' + gus[i] + '" >' + gus[i] + '' 
+        // '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
         // '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
         // "<input type=" + "\"checkbox\" " + "name=" +Val+ " value="+i+1+">"+gus[i]
-  
+        
+        
+
       }
-  
+    
+      opens();
     $('#b1').empty()
     $('#b1').append(temp_html)
     
@@ -92,7 +117,8 @@ function catListing(Val) {
       }
       temp_html +=
         '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-         
+        $( "#유제품" ).on( "click", checks());
+
     }
   
     $('#b2').empty()
@@ -317,4 +343,3 @@ function catListing(Val) {
 
 
 }
-
