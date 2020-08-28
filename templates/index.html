@@ -315,7 +315,8 @@
 
       $j(document).ready(function(){
          $j('.bt button').toggle(function(){
-            getChecked();
+            var element = getChecked()[0]
+            console.log("여기는 함수 리턴 후야getChecked()[0]: "+getChecked());
             
             $j('.project-card').css('display', 'block');
             $j('.bt button').text('다시하기');},
