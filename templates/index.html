@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+   <script type="text/javascript">var $j = $.noConflict(true);</script>
+   <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+   <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+   
 	<title>index.html</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/cs.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/cs.css') }}">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
+   
+   
+
 	<!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
 	
 
@@ -146,35 +155,35 @@
    </div>
    
    <div class="bt">
-      <button>제출하기</button>
+      <button id = "submitButton">제출하기</button>
    </div>
    
    
    <script>
 
-      $(document).ready(function(){
-         $('.b1').toggle(function(){
+      $j(document).ready(function(){
+         $j('.b1').toggle(function(){
             
-               $('.b1').addClass('b1close').removeClass('b1');
-               $('.b1_board').css('display', 'block');
+               $j('.b1').addClass('b1close').removeClass('b1');
+               $j('.b1_board').css('display', 'block');
                catListing('알류');},
                function(){
-               $('.b1close').addClass('b1').removeClass('b1close');  
-               $('.b1_board').css('display', 'none');
+               $j('.b1close').addClass('b1').removeClass('b1close');  
+               $j('.b1_board').css('display', 'none');
             });
       });
-      $(document).ready(function(){
-         $('.b2').toggle(function(){
-               $('.b2').addClass('b2close').removeClass('b2');
-               $('.b2_board').css('display', 'block');
+      $j(document).ready(function(){
+         $j('.b2').toggle(function(){
+               $j('.b2').addClass('b2close').removeClass('b2');
+               $j('.b2_board').css('display', 'block');
                catListing('유제품');},
                function(){
-               $('.b2close').addClass('b2').removeClass('b2close');  
-               $('.b2_board').css('display', 'none');
+               $j('.b2close').addClass('b2').removeClass('b2close');  
+               $j('.b2_board').css('display', 'none');
             });
       });
       $(document).ready(function(){
-         $('.b3').toggle(function(){
+         $('.b3').click(function(){
                $('.b3').addClass('b3close').removeClass('b3');
                $('.b3_board').css('display', 'block');
                catListing('유지류');},
@@ -304,13 +313,13 @@
             });
       });
 
-      $(document).ready(function(){
-         $('.bt button').toggle(function(){
-            $('.project-card').css('display', 'block');
-            $('.bt button').text('다시하기');},
+      $j(document).ready(function(){
+         $j('.bt button').toggle(function(){
+            $j('.project-card').css('display', 'block');
+            $j('.bt button').text('다시하기');},
             function(){ 
-            $('.project-card').css('display', 'none');
-            $('.bt button').text('제출하기');});
+            $j('.project-card').css('display', 'none');
+            $j('.bt button').text('제출하기');});
       });
 
       

@@ -1,14 +1,9 @@
-// ajax 관련 코드 (by.세일) 건들지 말 것 
-
-$(document).ready(function () {
+// ajax 관련 코드 (by.세일) 건들지 말 것 >>
+/* $(document).ready(function () {
 
   listing();
- 
-
 
 });
-
-let open;
 
 function listing() {
   $.ajax({
@@ -21,131 +16,97 @@ function listing() {
         let orders2 = response['recipe'];
 
         console.log(response);
-
-
       } else {
         alert('기사를 받아오지 못했습니다');
       }
     }
   })
+} */
+// ajax 관련 코드 (by.세일) 건들지 말 것 <<
 
 
+function opens() {
+  console.log('opens함수')
+  
+  // JQuery를 이용해서 체크 확인.
+  $( document ).ready( function() {
+    var el1 = document.getElementsByName("recipe")[0]
+    $( el1 ).click( function() {
+      alert("체크됨!");
+    });
+  } );  
+
+
+  console.log('성공')
 }
 
 
+// 체크된 리스트 반환하는 함수
+function getChecked(){
+  var checkedlist = []
+  $( document ).ready( function() {
+    var el1 = document.getElementsByName("recipe")[0]
+    $( el1 ).click( function() {
+      alert("체크됨!");
+    });
+  } ); 
 
-function check() {
-  // Get the checkbox
-  var checkBox = document.getElementById("myCheck");
-  // Get the output text
-  var text = document.getElementById("text");
-
-  // If the checkbox is checked, display the output text
-  console.log(text);
-
-  // if (checkBox == null){
-  //   return;
-  //  }
-
-  if (checkBox.checked == true){
-    alert('sfjdisfjis');
-    $(function(){
-      $(".yUna").prop("checked", alert('세일'));
-  })
-    text.style.display = "block";
-    
-  } else {
-    text.style.display = "none";
-  }
-  }
-
-  // $("input:checkbox[id='계란']").prop("checked", alert('세일'));
-
-
-  // $( "#계란" ).on( "click", checks());
-
-
-  // String [] value = request.getParameterValues("알류");
-
-  function opens() 
-  {
-    console.log('opens함수')
-    $("input:checkbox[id='계란']").attr("checked", console.log('세일'));
-    console.log('성공')
-  }
-
-  // function showcards() {
-  //   igts = []
-  //   $('#알류').each(function () {
-  //     let igt = $(this).val()
-  //     igts.push(igt)
-  //   })
-    
-    
-  //   console.log('success')
-  // } 
+  
+  return checkedlist;
+}
 
 function catListing(Val) {
 
   let temp_html = ''
   let gus = []
-  
+
+  let select = []
+
   if (Val == '알류') {
     gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
-    temp_html += '<input type="checkbox" name="' + Val + '" value="' + gus[0] + '" id="' + "yUna" + '" >' + gus[0] + '' 
-    for (let i = 1; i < gus.length; i++) {
-      temp_html +=
-        
-        '<input type="checkbox" name="' + Val + '" value="' + gus[i] + '" id="' + gus[i] + '" >' + gus[i] + '' 
-        // '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
-        // '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-        // "<input type=" + "\"checkbox\" " + "name=" +Val+ " value="+i+1+">"+gus[i]
-        
-        
 
-      }
+    for (let i = 0; i < gus.length; i++) {
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+    }
     
-       opens();
+    
     $('#b1').empty()
     $('#b1').append(temp_html)
-    
+    //alert(document.getElementsByName("recipe")[0].value);
+    opens();
+
   } if (Val == '유제품') {
     gus = ["우유", "연유", "버터", "치즈", "모짜렐라치즈", "바나나우유", "바나나아이스크림", "분유", "스트링치즈", "요거트", "요구르트", "우유", "체다치즈", "크림치즈",
       "탈지분유", "파마산치즈", "파마산치즈가루"]
 
-    
+
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-        $( "#유제품" ).on( "click", checks());
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
 
     }
-  
+
     $('#b2').empty()
     $('#b2').append(temp_html)
-    
-    
+
+
   } if (Val == '유지류') {
     gus = ["코코넛오일", "콩기름", "튀김기름"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b3').empty()
     $('#b3').append(temp_html)
   } if (Val == '견과류') {
     gus = ["아몬드", "아몬드가루", "잣", "캐슈넛", "피칸", "호두"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b4').empty()
     $('#b4').append(temp_html)
   } if (Val == '과일류') {
@@ -155,14 +116,12 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b5').empty()
     $('#b5').append(temp_html)
   } if (Val == '육류') {
@@ -174,28 +133,25 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%8==0){
-        temp_html+='<div></div>'
+      if (i % 8 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b6').empty()
     $('#b6').append(temp_html)
   } if (Val == '콩류') {
     gus = ["검은콩", "견과류", "두부", "두유", "땅콩", "땅콩가루", "땅콩버터", "볶은땅콩", "연두부", "완두콩", "콩가루", "팥"]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b7').empty()
     $('#b7').append(temp_html)
   } if (Val == '곡류') {
@@ -204,28 +160,25 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b8').empty()
     $('#b8').append(temp_html)
   } if (Val == '해조류') {
     gus = ["다시마", "건다시마", "다시마육수", "김", "김가루", "김밥김", "김자반", "메생이", "미역", "조미김", "톳", "파래"]
 
     for (let i = 0; i < gus.length; i++) {
-      if((i+1)%12==0){
-        temp_html+='<div></div>'
+      if ((i + 1) % 12 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b9').empty()
     $('#b9').append(temp_html)
   } if (Val == '어패류') {
@@ -234,14 +187,12 @@ function catListing(Val) {
       "참치통조림", "코다리", "홍합", "황태", "황태채", "황태포", "훈제연어"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b10').empty()
     $('#b10').append(temp_html)
   } if (Val == '갑각류') {
@@ -249,14 +200,12 @@ function catListing(Val) {
       "자숙새우", "칵테일새우", "크래미", "흰다리새우"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b11').empty()
     $('#b11').append(temp_html)
   } if (Val == '버섯류') {
@@ -264,14 +213,13 @@ function catListing(Val) {
       "애느타리버섯", "양송이버섯", "팽이버섯", "표고버섯", "표고버섯가루"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%9==0){
-        temp_html+='<div></div>'
+      if (i % 9 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b12').empty()
     $('#b12').append(temp_html)
   } if (Val == '채소류') {
@@ -287,14 +235,12 @@ function catListing(Val) {
       "케일", "콩나물", "토마토", "파", "파프리카", "피망", "호박"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
     }
-  
+
     $('#b13').empty()
     $('#b13').append(temp_html)
   } if (Val == '소스류') {
@@ -309,14 +255,13 @@ function catListing(Val) {
       "페퍼론치노", "풋고추", "피시소스", "허니머스터드", "홀그레인머스터드",
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b14').empty()
     $('#b14').append(temp_html)
   } if (Val == '기타') {
@@ -332,17 +277,19 @@ function catListing(Val) {
       "호박잎", "화이트와인", "화이트초콜릿", "후리가케", "흑임자"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+
     }
-  
+
     $('#b15').empty()
     $('#b15').append(temp_html)
   }
 
 
+
 }
+
+
