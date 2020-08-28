@@ -315,8 +315,8 @@
 
       $j(document).ready(function(){
          $j('.bt button').toggle(function(){
-            let ret = getChecked();
-            console.log(ret)
+            getChecked();
+            
             $j('.project-card').css('display', 'block');
             $j('.bt button').text('다시하기');},
             function(){ 

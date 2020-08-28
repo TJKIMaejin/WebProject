@@ -32,19 +32,19 @@ function check(){
 
 // 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
 function getChecked() {
-  var checkedlist = []
+  let checkedlist = []
+  
    $(document).ready(function () {
     var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
     for (var i in el1) {
-      if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우    
-        checkedlist += el1[i].value
-
+      if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+        // $(checkedlist).append(el1[i].value)
+        checkedlist = append(el1[i].value)
+        console.log(checkedlist)
       }
     }
   }); 
-  /* for (var j in checkedlist) {
-    console.log(checkedlist[j])
-  } */
+  //console.log(checkedlist[0])
   return checkedlist;
 }
 
