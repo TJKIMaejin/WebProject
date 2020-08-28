@@ -32,7 +32,9 @@ function check(){
 
 // 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
 function getChecked() {
-  var checkedlist = []
+  var checkedlist = new Array();
+  
+  
 
   $(document).ready(function () {
     var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
@@ -40,13 +42,17 @@ function getChecked() {
 
     for (var i = 0; i < el1.length; i++) {
       if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
-        (checkedlist).push((el1[i].value))
+        checkedlist.push((el1[i].value))
+
         console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
+        // recipe=append((checkedlist).push((el1[i].value)))
 
       }
     }
     console.log("checkedlist[0]: " + checkedlist[0])
     console.log("checkedlist[1]: " + checkedlist[1])
+    console.log(checkedlist)
+
     return checkedlist;
   });
 }
