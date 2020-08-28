@@ -25,33 +25,26 @@ function listing() {
 // ajax 관련 코드 (by.세일) 건들지 말 것 <<
 
 
-function opens() {
-  console.log('opens함수')
+
+function check(){
   
-  // JQuery를 이용해서 체크 확인.
-  $( document ).ready( function() {
-    var el1 = document.getElementsByName("recipe")[0]
-    $( el1 ).click( function() {
-      alert("체크됨!");
-    });
-  } );  
-
-
-  console.log('성공')
 }
 
-
-// 체크된 리스트 반환하는 함수
-function getChecked(){
+// 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
+function getChecked() {
   var checkedlist = []
-  $( document ).ready( function() {
-    var el1 = document.getElementsByName("recipe")[0]
-    $( el1 ).click( function() {
-      alert("체크됨!");
-    });
-  } ); 
+   $(document).ready(function () {
+    var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
+    for (var i in el1) {
+      if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우    
+        checkedlist += el1[i].value
 
-  
+      }
+    }
+  }); 
+  /* for (var j in checkedlist) {
+    console.log(checkedlist[j])
+  } */
   return checkedlist;
 }
 
@@ -66,14 +59,12 @@ function catListing(Val) {
     gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
 
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
     
     
     $('#b1').empty()
     $('#b1').append(temp_html)
-    //alert(document.getElementsByName("recipe")[0].value);
-    opens();
 
   } if (Val == '유제품') {
     gus = ["우유", "연유", "버터", "치즈", "모짜렐라치즈", "바나나우유", "바나나아이스크림", "분유", "스트링치즈", "요거트", "요구르트", "우유", "체다치즈", "크림치즈",
@@ -84,7 +75,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -95,7 +86,7 @@ function catListing(Val) {
   } if (Val == '유지류') {
     gus = ["코코넛오일", "콩기름", "튀김기름"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b3').empty()
@@ -103,7 +94,7 @@ function catListing(Val) {
   } if (Val == '견과류') {
     gus = ["아몬드", "아몬드가루", "잣", "캐슈넛", "피칸", "호두"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -119,7 +110,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b5').empty()
@@ -136,7 +127,7 @@ function catListing(Val) {
       if (i % 8 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -149,7 +140,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b7').empty()
@@ -163,7 +154,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -176,7 +167,7 @@ function catListing(Val) {
       if ((i + 1) % 12 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b9').empty()
@@ -190,7 +181,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b10').empty()
@@ -203,7 +194,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b11').empty()
@@ -216,7 +207,7 @@ function catListing(Val) {
       if (i % 9 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -238,7 +229,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
 
     $('#b13').empty()
@@ -258,7 +249,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
@@ -280,7 +271,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" onclick="check()">'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
 
     }
 
