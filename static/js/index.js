@@ -1,5 +1,5 @@
 // ajax 관련 코드 (by.세일) 건들지 말 것 >>
-/* $(document).ready(function () {
+$(document).ready(function () {
 
   listing();
 
@@ -21,7 +21,7 @@ function listing() {
       }
     }
   })
-} */
+} 
 // ajax 관련 코드 (by.세일) 건들지 말 것 <<
 
 

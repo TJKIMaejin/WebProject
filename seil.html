@@ -1,87 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index.html</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/cs.css">
-	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/cs.css') }}"> -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <title></title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+   <!-- JS -->   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    <script>
-        $(document).ready(function(){
-			$('.b1').toggle(function(){
-				
-					
-					function(){
-                        $('.b1').addClass('b1close').removeClass('b1');
-					$('.b1_board').css('display', 'block');
-                    catListing('알류');
-                    console.log('토글성공')}
-				});
-        });
-        
-        
 
-        function catListing(Val) {
+   <!-- 구글폰트 -->
+   <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+   <style type="text/css">
+      .wrap{
 
-            let temp_html = ''
-            let gus = []
-
-            if (Val == '알류') {
-                gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
-
-                for (let i = 0; i < gus.length; i++) {
-                    temp_html += '<input type="checkbox" name="' + Val + '" value="' + gus[i] + '" id="' + gus[i] +
-                        '" >' + gus[i] + ''
+         width: 900px;
+         margin: auto;
+      }
+      #posting-box {
+         display: none;
+      }
+      body {
+         background-size: cover;
+         background-position: center;
+         
+      }
 
 
-                }
-                $('#b1').empty()
-                $('#b1').append(temp_html)
-                opens();
-                
+   </style>
+   <script type="text/javascript">
+      function openclose() {
+      // id 값 posting-box의 display 값이 block 이면
+      if ( $('#posting-box').css('display') == 'block' ) {
+         // posting-box를 가리고
+         $('#posting-box').hide();
+      } else {
+         // 아니면 posting-box를 펴라
+         $('#posting-box').show();
+      }
 
-            }
-        }
-        function opens() {
-            console.log('opens함수')
-            $("input:checkbox[id='계란']").attr("checked", console.log('세일'));
-            console.log('성공')
-        }
-    </script>
+   }   function openclose1() {
+      // id 값 posting-box의 display 값이 block 이면
+      if ( $('#posting-box').css('display') == 'block' ) {
+         // posting-box를 가리고
+         $('#posting-box').hide();
+      } else {
+         // 아니면 posting-box를 펴라
+         $('#posting-box').show();
+      }
 
-    <style>
-        /* .b1{
-	display: inline;
-	font-family: 'Noto Sans KR', sans-serif;
-	font-weight: bold;
-	box-sizing: border-box;
-	outline: 0;
-	text-decoration: none;
-	font-size: 15px;
-	padding: 0px 10px;
-	text-align: left;
-	line-height: 1;
-	color: #20acd5;
-} */
-    </style>
-	
+   }   function openclose2() {
+      // id 값 posting-box의 display 값이 block 이면
+      if ( $('#posting-box').css('display') == 'block' ) {
+         // posting-box를 가리고
+         $('#posting-box').hide();
+      } else {
+         // 아니면 posting-box를 펴라
+         $('#posting-box').show();
+      }
 
+   }   function openclose3() {
+      // id 값 posting-box의 display 값이 block 이면
+      if ( $('#posting-box').css('display') == 'block' ) {
+         // posting-box를 가리고
+         $('#posting-box').hide();
+      } else {
+         // 아니면 posting-box를 펴라
+         $('#posting-box').show();
+      }
+
+   }   function openclose4() {
+      // id 값 posting-box의 display 값이 block 이면
+      if ( $('#posting-box').css('display') == 'block' ) {
+         // posting-box를 가리고
+         $('#posting-box').hide();
+      } else {
+         // 아니면 posting-box를 펴라
+         $('#posting-box').show();
+      }
+
+   }
+
+</script>
 </head>
-
 <body>
-    <div class="s_category">
-        <span class="s_category_tit">Category All</span>
-        <span class="b1">알류</span>
-    </div>
-
-<div class="b1_board">
-    <div class="b1_list" id="b1">
-        
-    </div>
-</div>
+   <div  class ="wrap">
+      <div class="jumbotron" style="background-color: white">
+         <h1 class="display-4" style="text-align:center;">오늘 뭐 먹지</h1>
+         
+         
+         <hr class="my-4">
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white">
+               <button type="button" class="btn btn-outline-primary"  style="margin:10px" onclick="openclose()"id="cate1" >알류</button>
+               <button type="button" class="btn btn-outline-secondary"style="margin:10px" onclick="openclose1()" id= "cate2" >유재품</button>
+               <button type="button" class="btn btn-outline-success" style="margin:10px" onclick="openclose2()">Success</button>
+               <button type="button" class="btn btn-outline-danger" style="margin:10px" onclick="openclose3()">Danger</button>
+               <button type="button" class="btn btn-outline-warning" style="margin:10px" onclick="openclose3()">Warning</button>
+               <button type="button" class="btn btn-outline-info" style="margin:10px" onclick="openclose4()">Info</button>
+               <button type="button" class="btn btn-outline-dark" style="margin:10px"onclick="openclose5()">Dark</button>
+            </ol>
+         </nav>
+         
+      </div>
+      <div id="posting-box" class="form-post">
+         <form style="background-color : white">
+            <div class="form-group">
+               <nav aria-label="breadcrumb" >
+                  <ol class="breadcrumb">
+                     <button type="button" class="btn btn-outline-primary" style="margin:10px " ></button>
+                     <button type="button" class="btn btn-outline-secondary"style="margin:10px" onclick="openclose()" >유재품</button>
+                     <button type="button" class="btn btn-outline-success" style="margin:10px" onclick="openclose()">Success</button>
+                     <button type="button" class="btn btn-outline-danger" style="margin:10px" onclick="openclose()">Danger</button>
+                     <button type="button" class="btn btn-outline-warning" style="margin:10px" onclick="openclose()">Warning</button>
+                     <button type="button" class="btn btn-outline-info" style="margin:10px" onclick="openclose()">Info</button>
+                     <button type="button" class="btn btn-outline-dark" style="margin:10px"onclick="openclose()">Dark</button>
+                  </ol>
+               </nav>
+            </div>
+            <button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+         </form>
+      </div>
+      <div class="card-group">
+         <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+         </div>
+         <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+         </div>
+         <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+         </div>
+      </div>
+   </div>
 
 </body>
+</html>
