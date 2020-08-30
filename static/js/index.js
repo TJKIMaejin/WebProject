@@ -1,44 +1,146 @@
 // ajax 관련 코드 (by.세일) 건들지 말 것 >>
-$(document).ready(function () {
 
-  listing();
 
-});
+$(document).ready(async function () {
+  var orders = new Array();
 
-function listing() {
   $.ajax({
     type: "GET",
     url: "/orders",
     data: {},
     success: function (response) {
       if (response['result'] == 'success') {
-        let orders = response['recipe3'];
-        let orders2 = response['recipe'];
-
+        orders.push(response['recipe']);
         console.log(response);
+        console.log(orders);   
       } else {
         alert('기사를 받아오지 못했습니다');
-      }
+      }     
     }
   })
-} 
-// ajax 관련 코드 (by.세일) 건들지 말 것 <<
-
-
-
-function check(){
   
+  console.log(orders);  //orders 안에 레시피 들어감 
+
+  // 여기서 카드를 보여주는 js 코드 필요. document.ready 함수가 뭔지 먼저 알기 (계속 시작하는 함수인지)
+  // 제출하기를 누르면 카드가 생기는 것. 카드의 개수가 여러개 생김 (위에 처럼 바꿔야함 메뉴 나오는 것)
+  $j('.bt button').toggle(function () {
+      var element = getChecked()
+      console.log(element); //element 는 재료 갖고 있는 리스트 , 함수 리턴 후 
+      seil(element, orders);
+
+
+      $j('.project-card').css('display', 'block');
+      $j('.bt button').text('다시하기');
+    },
+    function () {
+
+      $j('.project-card').css('display', 'none');
+      $j('.bt button').text('제출하기');
+    });
+    
+    console.log('ready의 마지막 console');  //ready 함수의 마지막 
+});
+
+function seil(element, orders)
+{
+  var recipe_final = new Array();
+  console.log(orders[0]);
+  console.log(element);
+  var count = 0;
+  for(var i = 0; i<element.length; i++)
+  {
+      
+      for(var j =0; j<orders[0].length; j++)
+      {
+        var material = $(orders[0][j]["recipe_main"].split('&'));
+        console.log(j);
+        for(var k in material)
+        {
+          console.log(material[k]);
+          // if(isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+          //   break;
+          if(element[i] == material[k])
+          {
+            
+            console.log(material[k]);
+            recipe_final.push(orders[0][j]["title"]);
+            break;
+          }
+        }
+        count++;
+        
+      
+      }
+      
+      
+  }
+  console.log(count);
+  console.log(recipe_final[0]);
 }
+
+
+// <<<<<<<<<<<<<<<<<<<<<callback 식으로 짠 것 (혹시몰라도 나둠)>>>>>>>>>>>>>>>>>>
+// function listing(callbackFunc) {
+//   $.ajax({
+//     type: "GET",
+//     url: "/orders",
+//     data: {},
+//     success: function (response) {
+//       if (response['result'] == 'success') {
+//         orders = response['recipe'];
+        
+
+//         console.log(response);
+//         console.log(orders);
+        
+//       } else {
+//         alert('기사를 받아오지 못했습니다');
+//       }
+//       callbackFunc(orders);
+//     }
+    
+//   })
+  
+// }
+//  listing(function(orders2) {
+//   console.log(orders2);
+//   lister = orders2;
+ 
+// }) 
+
+// <<<<<<<<<<listing 함수 ajax 인데 리턴이 안되어서 남김 by. 세일>>>>>>>>>>>> 
+// function listing() {
+//   var orders = new Array();
+//   $.ajax({
+//     type: "GET",
+//     url: "/orders",
+//     data: {},
+//     success: function (response) {
+//       if (response['result'] == 'success') {
+//         orders.push(response['recipe']);
+        
+
+//         console.log(response);
+//         console.log(orders);
+        
+//       } else {
+//         alert('기사를 받아오지 못했습니다');
+//       }
+
+      
+//     }
+    
+//   })
+  
+// } 
+
 
 // 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
 function getChecked() {
   var checkedlist = new Array();
   
+  var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
   
-
-  $(document).ready(function () {
-    var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
-
 
     for (var i = 0; i < el1.length; i++) {
       if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
@@ -54,8 +156,29 @@ function getChecked() {
     console.log(checkedlist)
 
     return checkedlist;
-  });
+
 }
+  // 이 아래는 ready function에 왜 넣은지 몰라서 안에만 빼서 둠 
+  // $(document).ready(function () {
+  //   var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
+
+
+  //   for (var i = 0; i < el1.length; i++) {
+  //     if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+  //       checkedlist.push((el1[i].value))
+
+  //       console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
+  //       // recipe=append((checkedlist).push((el1[i].value)))
+
+  //     }
+  //   }
+  //   console.log("checkedlist[0]: " + checkedlist[0])
+  //   console.log("checkedlist[1]: " + checkedlist[1])
+  //   console.log(checkedlist)
+
+  //   return checkedlist;
+  // });
+  // }
 
 function catListing(Val) {
 
