@@ -41,8 +41,15 @@ $(document).ready(async function () {
     console.log('ready의 마지막 console');  //ready 함수의 마지막 
 });
 
+
+
+    
+      
+    
+
 function seil(element, orders)
 {
+  let picture_html = ''
   var recipe_final = new Array();
   console.log(orders[0]);
   console.log(element);
@@ -57,25 +64,39 @@ function seil(element, orders)
         for(var k in material)
         {
           console.log(material[k]);
-          // if(isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
-          //   break;
+          if(!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+            break;
           if(element[i] == material[k])
           {
-            
+            count++;
             console.log(material[k]);
             recipe_final.push(orders[0][j]["title"]);
+
+            picture_html += '<div class = "c "'+count+'" ">\
+            <div class="c1-project-img"  id="food"></div>\
+            <div class = "c1-project-explain">\
+            <p>"'+orders[0][j]["title"]+'"</p>\
+            <div class = "c1-project-btn"\
+            </div>\
+            </div>'
+          // 밑에 url div 클래스 하나 뺌 
+
             break;
           }
         }
-        count++;
+        
         
       
       }
       
       
   }
+
+  $('#card').append(picture_html);
   console.log(count);
-  console.log(recipe_final[0]);
+  console.log(recipe_final);  //재료 일치하는 recipe 확인 
+
+
 }
 
 
