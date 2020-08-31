@@ -8,7 +8,7 @@ import json
 def call(keyword):
 #    checkstr = keyword
     encText = quote(keyword)
-    display = 10
+    display = 3
     url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=" + str(display) + "&start=1" + "&sort=sim"
     request = urllib.request.Request(url)
     request.add_header("X-Naver-Client-Id","oXfhI4we88tBhBs1hxY_")
