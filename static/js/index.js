@@ -20,24 +20,34 @@ $(document).ready(async function () {
 
   // 여기서 카드를 보여주는 js 코드 필요. document.ready 함수가 뭔지 먼저 알기 (계속 시작하는 함수인지)
   // 제출하기를 누르면 카드가 생기는 것. 카드의 개수가 여러개 생김 (위에 처럼 바꿔야함 메뉴 나오는 것)
+  
   $j('.bt button').toggle(function () {
       var element = getChecked()
       seil(element, orders);
-
+      
 
       $j('.project-card').css('display', 'block');
       $j('.bt button').text('다시하기');
     },
     function () {
-
+     
+      
+      
       $j('.project-card').css('display', 'none');
       $j('.bt button').text('제출하기');
     });
     
 });
 
+
+
+    
+      
+    
+
 function seil(element, orders)
 {
+  let picture_html = ''
   var recipe_final = new Array();
   var count = 0;
   for(var i = 0; i<element.length; i++)
@@ -48,24 +58,35 @@ function seil(element, orders)
         var material = orders[0][j]["recipe_main"].split('&');
         for(var k in material)
         {
-
-          // if(isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
-          //   break;
+          if(!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+            break;
           if(element[i] == material[k])
           {
-            
-
+            count++;
+            console.log(material[k]);
             recipe_final.push(orders[0][j]["title"]);
+
+            picture_html += '<div class = "c'+(count%3+1)+' ">\
+            <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
+            <div class = "c1-project-explain">\
+            <p>"'+orders[0][j]["title"]+'"</p>\
+            <div class = "c1-project-btn">\
+            <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
+            </div>\
+            </div>\
+            </div>'
             break;
           }
         }
-        count++;
+        
         
       
       }
       
       
   }
+  $('#card').empty()
+  $('#card').append(picture_html);
 
 }
 

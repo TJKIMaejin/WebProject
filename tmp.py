@@ -59,9 +59,10 @@ def hee_get():
     index.html 페이지 연결.
     """
     list1 = list(db2.recipe3.find({}, {'_id': 0}))
-    list2 =list(db.recipe.find({}, {'_id': 0}))
+    list2 =list(db.recipe.find())
 
-    print(list1)
+
+    print(list2)
 
     return jsonify({'result': 'success', 'list': list1,'list2':list2})
 
