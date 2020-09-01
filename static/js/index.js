@@ -71,7 +71,7 @@ function seil(element, orders)
             <div class = "c1-project-explain">\
             <p>"'+orders[0][j]["title"]+'"</p>\
             <div class = "c1-project-btn">\
-            <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
+            <button type="button" onclick="location.href= \'http://localhost:5000/\' ">선택하기</button>\
             </div>\
             </div>\
             </div>'
