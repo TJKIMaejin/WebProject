@@ -82,6 +82,10 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
+							<form method="GET" action="/call">
+							<input type="text" name = "char">
+							<div class='button'>
+								<button type="submit">양파</button>
 							<table cellspacing="0" border="1" summary="재료검색 API 결과" class="tbl_type">
         					<caption>재료검색 API 결과</caption>
                 				<colgroup>
@@ -102,9 +106,6 @@
 										</tr>
 								</thead>
 								<tbody id="list">
-										<tr class="__oldlist" style="">
-												<td colspan="7">검색 결과가 없습니다.</td>
-										</tr>
 										<tr class="__template" style="display: none">
 												<td><img src="#image#"  width="50px" height="70px" /></td>
 												<td>#title#</td>
@@ -124,12 +125,12 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		function template(template_id, params){
+		function template(template_id, food_data){
                 var c = $('.' + template_id).clone();
                 var html = $('<div>').append(c).html();
-				for(i in range (0,parmas.length))
-					for(var key in params[i]){
-                        html = html.replace(new RegExp('#' + key + '#', 'g'), params[i][key]);
+				for(i in range (0,10))
+					for(var key in food_data[i]){
+                        html = html.replace(new RegExp('#' + key + '#', 'g'), food_data[i][key]);
                 	}
                 html = html.replace(/#template_([^#]*)#/g, '$1');
                 var $html = $(html).removeClass(template_id).removeClass('__template');

@@ -3,6 +3,7 @@ import os
 import sys
 from urllib.parse import quote
 import json
+import flask
 
 # 네이버 api call
 def call(keyword):
@@ -22,13 +23,22 @@ def call(keyword):
         json_data = middle_data['items']
     else:
         print("Error code:"+rescode)
-    return json_data
 
-list=[]
+    list1 = [[{}]*5 for i in range(5)]
+    for i in range (0,display) :
+        list1[1][i] =json_data[i]["image"]
+    for i in range (0,display) :
+        list1[2][i] = json_data[i]["title"]
+    for i in range (0,display) :
+        list1[3][i] = json_data[i]["link"]
+    for i in range (0,display) :
+        list1[4][i] = json_data[i]["lprice"]
+    
+    return list1
+
 list = call("양파")
+
 print(list)
-
-
 #list = []
 #    list = json_data
 #    food_data = []
