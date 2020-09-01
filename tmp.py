@@ -46,7 +46,7 @@ def yuna_get():
 
     # 클라이언트 요청과 일치하는 document 찾기 {키:밸류} --> id는 제외하고 넘겨줌.. Object 문제,, 대체 왜?? 그냥 모르자 필요 없으니까
     # .find도 안됨.. find_one만됨... 왜?? 사실 하나만 필요해서 알 필요 없음
-    recipe_info = db.recipe.find_one({"_id": id}, {"_id": 0})
+    recipe_info = db.recipe.find_one({"_id": id}, {"_id": True})
 
     return jsonify({"result": 'success', 'info': recipe_info})
 

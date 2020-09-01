@@ -10,22 +10,18 @@ $(document).ready(async function () {
     data: {},
     success: function (response) {
       if (response['result'] == 'success') {
-        orders.push(response['recipe']);
-        console.log(response);
-        console.log(orders);   
+        orders.push(response['recipe']);  //orders 안에 레시피 들어감 
       } else {
         alert('기사를 받아오지 못했습니다');
       }     
     }
   })
   
-  console.log(orders);  //orders 안에 레시피 들어감 
 
   // 여기서 카드를 보여주는 js 코드 필요. document.ready 함수가 뭔지 먼저 알기 (계속 시작하는 함수인지)
   // 제출하기를 누르면 카드가 생기는 것. 카드의 개수가 여러개 생김 (위에 처럼 바꿔야함 메뉴 나오는 것)
   $j('.bt button').toggle(function () {
       var element = getChecked()
-      console.log(element); //element 는 재료 갖고 있는 리스트 , 함수 리턴 후 
       seil(element, orders);
 
 
@@ -38,31 +34,27 @@ $(document).ready(async function () {
       $j('.bt button').text('제출하기');
     });
     
-    console.log('ready의 마지막 console');  //ready 함수의 마지막 
 });
 
 function seil(element, orders)
 {
   var recipe_final = new Array();
-  console.log(orders[0]);
-  console.log(element);
   var count = 0;
   for(var i = 0; i<element.length; i++)
   {
       
       for(var j =0; j<orders[0].length; j++)
       {
-        var material = $(orders[0][j]["recipe_main"].split('&'));
-        console.log(j);
+        var material = orders[0][j]["recipe_main"].split('&');
         for(var k in material)
         {
-          console.log(material[k]);
+
           // if(isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
           //   break;
           if(element[i] == material[k])
           {
             
-            console.log(material[k]);
+
             recipe_final.push(orders[0][j]["title"]);
             break;
           }
@@ -74,8 +66,7 @@ function seil(element, orders)
       
       
   }
-  console.log(count);
-  console.log(recipe_final[0]);
+
 }
 
 
@@ -145,16 +136,8 @@ function getChecked() {
     for (var i = 0; i < el1.length; i++) {
       if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
         checkedlist.push((el1[i].value))
-
-        console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
-        // recipe=append((checkedlist).push((el1[i].value)))
-
       }
     }
-    console.log("checkedlist[0]: " + checkedlist[0])
-    console.log("checkedlist[1]: " + checkedlist[1])
-    console.log(checkedlist)
-
     return checkedlist;
 
 }
