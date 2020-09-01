@@ -16,6 +16,7 @@ def home():
 def view_orders():
 
    list1 = list(db2.recipe.find({}, {'_id': 0}))
+   print(list1)
    list2 = list(db.recipe3.find({}, {'_id': 0}))
    return jsonify({'result': 'success', 'recipe3': list2, 'recipe': list1})
 

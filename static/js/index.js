@@ -1,122 +1,259 @@
-// ajax 관련 코드 (by.세일) 건들지 말 것 
+// ajax 관련 코드 (by.세일) 건들지 말 것 >>
 
-$(document).ready(function () {
 
-  listing();
-  
+$(document).ready(async function () {
+  var orders = new Array();
 
-});
-
-function listing() {
   $.ajax({
     type: "GET",
     url: "/orders",
     data: {},
     success: function (response) {
       if (response['result'] == 'success') {
-        let orders = response['recipe3'];
-        let orders2 = response['recipe'];
-
+        orders.push(response['recipe']);
         console.log(response);
-
-
+        console.log(orders);   
       } else {
         alert('기사를 받아오지 못했습니다');
-      }
+      }     
     }
   })
+  
+  console.log(orders);  //orders 안에 레시피 들어감 
+
+  // 여기서 카드를 보여주는 js 코드 필요. document.ready 함수가 뭔지 먼저 알기 (계속 시작하는 함수인지)
+  // 제출하기를 누르면 카드가 생기는 것. 카드의 개수가 여러개 생김 (위에 처럼 바꿔야함 메뉴 나오는 것)
+  
+  $j('.bt button').toggle(function () {
+      var element = getChecked()
+      console.log(element); //element 는 재료 갖고 있는 리스트 , 함수 리턴 후 
+      seil(element, orders);
+      
+
+      $j('.project-card').css('display', 'block');
+      $j('.bt button').text('다시하기');
+    },
+    function () {
+     
+      
+      
+      $j('.project-card').css('display', 'none');
+      $j('.bt button').text('제출하기');
+    });
+    
+    console.log('ready의 마지막 console');  //ready 함수의 마지막 
+});
+
+
+
+    
+      
+    
+
+function seil(element, orders)
+{
+  let picture_html = ''
+  var recipe_final = new Array();
+  console.log(orders[0]);
+  console.log(element);
+  var count = 0;
+  for(var i = 0; i<element.length; i++)
+  {
+      
+      for(var j =0; j<orders[0].length; j++)
+      {
+        var material = $(orders[0][j]["recipe_main"].split('&'));
+        console.log(j);
+        for(var k in material)
+        {
+          console.log(material[k]);
+          if(!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+            break;
+          if(element[i] == material[k])
+          {
+            count++;
+            console.log(material[k]);
+            recipe_final.push(orders[0][j]["title"]);
+
+            picture_html += '<div class = "c'+(count%3+1)+' ">\
+            <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
+            <div class = "c1-project-explain">\
+            <p>"'+orders[0][j]["title"]+'"</p>\
+            <div class = "c1-project-btn">\
+            <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
+            </div>\
+            </div>\
+            </div>'
+            break;
+          }
+        }
+        
+        
+      
+      }
+      
+      
+  }
+  $('#card').empty()
+  $('#card').append(picture_html);
+  console.log(count);
+  console.log(recipe_final);  //재료 일치하는 recipe 확인 
 
 
 }
 
-function check() {
-  alert('sfjdisfjis');
-  // Get the checkbox
-  var checkBox = document.getElementById("myCheck");
-  // Get the output text
-  var text = document.getElementById("text");
 
-  // If the checkbox is checked, display the output text
-  
-  if (checkBox == null){
-    return
-   }
+// <<<<<<<<<<<<<<<<<<<<<callback 식으로 짠 것 (혹시몰라도 나둠)>>>>>>>>>>>>>>>>>>
+// function listing(callbackFunc) {
+//   $.ajax({
+//     type: "GET",
+//     url: "/orders",
+//     data: {},
+//     success: function (response) {
+//       if (response['result'] == 'success') {
+//         orders = response['recipe'];
+        
 
-  if (checkBox.checked == true){
-    $(function(){
-      $("input:checkbox[id='계란']").prop("checked", alert('세일'));
-  })
-    text.style.display = "block";
+//         console.log(response);
+//         console.log(orders);
+        
+//       } else {
+//         alert('기사를 받아오지 못했습니다');
+//       }
+//       callbackFunc(orders);
+//     }
     
-  } else {
-    text.style.display = "none";
-  }
-  }
+//   })
+  
+// }
+//  listing(function(orders2) {
+//   console.log(orders2);
+//   lister = orders2;
+ 
+// }) 
 
-  // $("input:checkbox[id='계란']").prop("checked", alert('세일'));
+// <<<<<<<<<<listing 함수 ajax 인데 리턴이 안되어서 남김 by. 세일>>>>>>>>>>>> 
+// function listing() {
+//   var orders = new Array();
+//   $.ajax({
+//     type: "GET",
+//     url: "/orders",
+//     data: {},
+//     success: function (response) {
+//       if (response['result'] == 'success') {
+//         orders.push(response['recipe']);
+        
+
+//         console.log(response);
+//         console.log(orders);
+        
+//       } else {
+//         alert('기사를 받아오지 못했습니다');
+//       }
+
+      
+//     }
+    
+//   })
+  
+// } 
 
 
+// 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
+function getChecked() {
+  var checkedlist = new Array();
+  
+  var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
   
 
+    for (var i = 0; i < el1.length; i++) {
+      if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+        checkedlist.push((el1[i].value))
+
+        console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
+        // recipe=append((checkedlist).push((el1[i].value)))
+
+      }
+    }
+    console.log("checkedlist[0]: " + checkedlist[0])
+    console.log("checkedlist[1]: " + checkedlist[1])
+    console.log(checkedlist)
+
+    return checkedlist;
+
+}
+  // 이 아래는 ready function에 왜 넣은지 몰라서 안에만 빼서 둠 
+  // $(document).ready(function () {
+  //   var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
 
 
+  //   for (var i = 0; i < el1.length; i++) {
+  //     if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+  //       checkedlist.push((el1[i].value))
 
+  //       console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
+  //       // recipe=append((checkedlist).push((el1[i].value)))
+
+  //     }
+  //   }
+  //   console.log("checkedlist[0]: " + checkedlist[0])
+  //   console.log("checkedlist[1]: " + checkedlist[1])
+  //   console.log(checkedlist)
+
+  //   return checkedlist;
+  // });
+  // }
 
 function catListing(Val) {
 
   let temp_html = ''
   let gus = []
-  
+
+  let select = []
+
   if (Val == '알류') {
     gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
 
     for (let i = 0; i < gus.length; i++) {
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '" id="' + gus[i] + '" onclick="'+check()+'">' + gus[i] + ''
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-        // "<input type=" + "\"checkbox\" " + "name=" +Val+ " value="+i+1+">"+gus[i]
-  
-      }
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+    }
+    
+    
     $('#b1').empty()
     $('#b1').append(temp_html)
-    
+
   } if (Val == '유제품') {
     gus = ["우유", "연유", "버터", "치즈", "모짜렐라치즈", "바나나우유", "바나나아이스크림", "분유", "스트링치즈", "요거트", "요구르트", "우유", "체다치즈", "크림치즈",
       "탈지분유", "파마산치즈", "파마산치즈가루"]
 
-    
+
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-         
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b2').empty()
     $('#b2').append(temp_html)
-    
-    
+
+
   } if (Val == '유지류') {
     gus = ["코코넛오일", "콩기름", "튀김기름"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b3').empty()
     $('#b3').append(temp_html)
   } if (Val == '견과류') {
     gus = ["아몬드", "아몬드가루", "잣", "캐슈넛", "피칸", "호두"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b4').empty()
     $('#b4').append(temp_html)
   } if (Val == '과일류') {
@@ -126,14 +263,12 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b5').empty()
     $('#b5').append(temp_html)
   } if (Val == '육류') {
@@ -145,28 +280,25 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%8==0){
-        temp_html+='<div></div>'
+      if (i % 8 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b6').empty()
     $('#b6').append(temp_html)
   } if (Val == '콩류') {
     gus = ["검은콩", "견과류", "두부", "두유", "땅콩", "땅콩가루", "땅콩버터", "볶은땅콩", "연두부", "완두콩", "콩가루", "팥"]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b7').empty()
     $('#b7').append(temp_html)
   } if (Val == '곡류') {
@@ -175,28 +307,25 @@ function catListing(Val) {
     ]
 
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b8').empty()
     $('#b8').append(temp_html)
   } if (Val == '해조류') {
     gus = ["다시마", "건다시마", "다시마육수", "김", "김가루", "김밥김", "김자반", "메생이", "미역", "조미김", "톳", "파래"]
 
     for (let i = 0; i < gus.length; i++) {
-      if((i+1)%12==0){
-        temp_html+='<div></div>'
+      if ((i + 1) % 12 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b9').empty()
     $('#b9').append(temp_html)
   } if (Val == '어패류') {
@@ -205,14 +334,12 @@ function catListing(Val) {
       "참치통조림", "코다리", "홍합", "황태", "황태채", "황태포", "훈제연어"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b10').empty()
     $('#b10').append(temp_html)
   } if (Val == '갑각류') {
@@ -220,14 +347,12 @@ function catListing(Val) {
       "자숙새우", "칵테일새우", "크래미", "흰다리새우"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b11').empty()
     $('#b11').append(temp_html)
   } if (Val == '버섯류') {
@@ -235,14 +360,13 @@ function catListing(Val) {
       "애느타리버섯", "양송이버섯", "팽이버섯", "표고버섯", "표고버섯가루"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%9==0){
-        temp_html+='<div></div>'
+      if (i % 9 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b12').empty()
     $('#b12').append(temp_html)
   } if (Val == '채소류') {
@@ -258,17 +382,15 @@ function catListing(Val) {
       "케일", "콩나물", "토마토", "파", "파프리카", "피망", "호박"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
     }
-  
+
     $('#b13').empty()
     $('#b13').append(temp_html)
-  } else if (Val == '소스류') {
+  } if (Val == '소스류') {
     gus = ["간장", "진간장", "국간장", "감식초", "마요네즈", "깨소금", "꿀", "녹말가루", "고춧가루", "들깨가루", "설탕", "소금", "된장", "쌈장", "고추장",
       "구운소금", "굵은고추가루", "굵은소금", "굴소스", "들기름", "참기름", "고기육수", "맛간장", "맛소금", "맛술", "매실액", "매운고추가루",
       "멸치가루", "멸치다시육수", "멸치액젓", "무염버터", "물엿", "바질", "볶은참깨", "새우젓", "사과식초", "시나몬파우더", "식용유", "액젓",
@@ -280,17 +402,16 @@ function catListing(Val) {
       "페퍼론치노", "풋고추", "피시소스", "허니머스터드", "홀그레인머스터드",
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b14').empty()
     $('#b14').append(temp_html)
-  } else if (Val == '기타') {
+  } if (Val == '기타') {
     gus = ["가래떡", "가쓰오부시", "강력쌀가루", "게맛살", "계피", "곤약", "골뱅이", "꽃빵", "누룽지", "모닝빵", "명엽채",
       "당면", "떡", "떡국떡", "또띠야", "라면", "라이스페이퍼", "레드와인", "마카다미아", "마카로니", "만두", "밀가루", "밀가루강력분", "밀가루박력분", "밀가루중력분", "밀떡",
       "바게트", "부침가루", "북어채", "사이다", "생크림", "소면", "소주", "순대", "순두부", "술", "스위트칠리소스", "스테이크소스", "스파게티면", "식빵",
@@ -303,18 +424,19 @@ function catListing(Val) {
       "호박잎", "화이트와인", "화이트초콜릿", "후리가케", "흑임자"
     ]
     for (let i = 0; i < gus.length; i++) {
-      if(i%10==0){
-        temp_html+='<div></div>'
+      if (i % 10 == 0) {
+        temp_html += '<div></div>'
       }
-      temp_html +=
-        '<input type="checkbox" name="' + Val + '" value="' + i + 1 + '">' + gus[i] + ''
-  
+      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+
     }
-  
+
     $('#b15').empty()
     $('#b15').append(temp_html)
   }
 
 
+
 }
+
 

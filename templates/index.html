@@ -1,313 +1,313 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+   <script type="text/javascript">var $j = $.noConflict(true);</script>
+   <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+   <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+   
 	<title>index.html</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/cs.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/cs.css') }}">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
+   
+   
+
+	<!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+	
+
 </head>
 
 <body>
-	<script type="text/javascript" src="../static/js/index.js"></script>
-	
-	<h1>오늘 뭐 먹지?</h1>
-	<div class="line"></div>
+   <script type="text/javascript" src="../static/js/index.js"></script>
+   
+   <h1>오늘 뭐 먹지?</h1>
+   <div class="line"></div>
 
-	<form>
-		<div class="s_category">
-			<span class="s_category_tit">Category All</span>
-			<span class="b1">알류</span>
-			<span class="b2">유제품</span>
-			<span class="b3">유지류</span>
-			<span class="b4">견과류</span>
-			<span class="b5">과일류</span>
-			<span class="b6">육류</span>
-			<span class="b7">콩류</span>
-			<span class="b8">곡류</span>
-			<span class="b9">해조류</span>
-			<span class="b10">어패류</span>
-			<span class="b11">갑각류</span>
-			<span class="b12">버섯류</span>
-			<span class="b13">채소류</span>
-			<span class="b14">소스류</span>
-			<span class="b15">기타</span>
-		</div>
-		<div class="b1_board">
-			<div class="b1_list" id="b1">
-				
-			</div>
-		</div>
-		<div class="b2_board">
-			<div class="b2_list" id="b2">
-				
-			</div>
-			
-		</div>
-		<div class="b3_board">
-			<div class="b3_list" id="b3">
-				
-			</div>
-		</div>
-		<div class="b4_board">
-			<div class="b4_list" id="b4">
-				
-			</div>
-		</div>
-		<div class="b5_board">
-			<div class="b5_list" id="b5">
+   <form>
+      <div class="s_category">
+         <span class="s_category_tit">Category All</span>
+         <span class="b1">알류</span>
+         <span class="b2">유제품</span>
+         <span class="b3">유지류</span>
+         <span class="b4">견과류</span>
+         <span class="b5">과일류</span>
+         <span class="b6">육류</span>
+         <span class="b7">콩류</span>
+         <span class="b8">곡류</span>
+         <span class="b9">해조류</span>
+         <span class="b10">어패류</span>
+         <span class="b11">갑각류</span>
+         <span class="b12">버섯류</span>
+         <span class="b13">채소류</span>
+         <span class="b14">소스류</span>
+         <span class="b15">기타</span>
+      </div>
+      <div class="b1_board">
+         <div class="b1_list" id="b1">
+            
+         </div>
+      </div>
+      <div class="b2_board">
+         <div class="b2_list" id="b2">
+            
+         </div>
+         
+      </div>
+      <div class="b3_board">
+         <div class="b3_list" id="b3">
+            
+         </div>
+      </div>
+      <div class="b4_board">
+         <div class="b4_list" id="b4">
+            
+         </div>
+      </div>
+      <div class="b5_board">
+         <div class="b5_list" id="b5">
 
-			</div>
-		</div>
-		<div class="b6_board">
-			<div class="b6_list" id="b6">
-				
-			</div>
-		</div>
-		<div class="b7_board">
-			<div class="b7_list" id="b7">
-				
-			</div>
-		</div>
-		<div class="b8_board">
-			<div class="b8_list" id="b8">
-				
-			</div>
-		</div>
-		<div class="b9_board">
-			<div class="b9_list" id="b9">
-				
-			</div>
-		</div>
-		<div class="b10_board">
-			<div class="b10_list" id="b10">
-				
-			</div>
-		</div>
-		<div class="b11_board">
-			<div class="b11_list" id="b11">
-				
-			</div>
-		</div>
-		<div class="b12_board">
-			<div class="b12_list" id="b12">
-				
-			</div>
-		</div>
-		<div class="b13_board">
-			<div class="b13_list" id="b13">
-				
-			</div>
-		</div>
-		<div class="b14_board">
-			<div class="b14_list" id="b14">
-				
-			</div>
-		</div>
-		<div class="b15_board">
-			<div class="b15_list" id="b15">
-				
-			</div>
-		</div>
-		
-	</form>
-	
-	<div class="project-card">
-		<div class="c1">
-			<div class="c1-project-img" id="food"></div>
-			<div class="c1-project-explain">
-				<p>1냐옹!</p>
-				<div class="c1-project-btn">
-					<button type="button" onclick="location.href='http://google.com' ">선택하기</button>
-				</div>
-			</div>
-		</div>
-		<div class="c2">
-			<div class="c2-project-img" id="food"></div>
-			<div class="c2-project-explain">
-				<p>2냐옹!</p>
-				<div class="c2-project-btn">
-					<button type="button" onclick="location.href='http://google.com' ">선택하기</button>
-				</div>
-			</div>
-		</div>
-		<div class="c3">
-			<div class="c3-project-img" id="food"></div>
-			<div class="c3-project-explain">
-				<p>3냐옹!</p>
-				<div class="c3-project-btn">
-					<button type="button" onclick="location.href='http://google.com' ">선택하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="bt">
-		<button>제출하기</button>
-	</div>
-	
-	
-	<script>
-		$(document).ready(function(){
-			$('.b1').toggle(function(){
-					$('.b1').addClass('b1close').removeClass('b1');
-					$('.b1_board').css('display', 'block');
-					catListing('알류');},
-					function(){
-					$('.b1close').addClass('b1').removeClass('b1close');  
-					$('.b1_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b2').toggle(function(){
-					$('.b2').addClass('b2close').removeClass('b2');
-					$('.b2_board').css('display', 'block');
-					catListing('유제품');},
-					function(){
-					$('.b2close').addClass('b2').removeClass('b2close');  
-					$('.b2_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b3').toggle(function(){
-					$('.b3').addClass('b3close').removeClass('b3');
-					$('.b3_board').css('display', 'block');
-					catListing('유지류');},
-					function(){
-					$('.b3close').addClass('b3').removeClass('b3close');  
-					$('.b3_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b4').toggle(function(){
-					$('.b4').addClass('b4close').removeClass('b4');
-					$('.b4_board').css('display', 'block');
-					catListing('견과류');},
-					function(){
-					$('.b4close').addClass('b4').removeClass('b4close');  
-					$('.b4_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b5').toggle(function(){
-					$('.b5').addClass('b5close').removeClass('b5');
-					$('.b5_board').css('display', 'block');
-					catListing('과일류');},
-					function(){
-					$('.b5close').addClass('b5').removeClass('b5close');  
-					$('.b5_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b6').toggle(function(){
-					$('.b6').addClass('b6close').removeClass('b6');
-					$('.b6_board').css('display', 'block');
-					catListing('육류')},
-					function(){
-					$('.b6close').addClass('b6').removeClass('b6close');  
-					$('.b6_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b7').toggle(function(){
-					$('.b7').addClass('b7close').removeClass('b7');
-					$('.b7_board').css('display', 'block');
-					catListing('콩류')},
-					function(){
-					$('.b7close').addClass('b7').removeClass('b7close');  
-					$('.b7_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b8').toggle(function(){
-					$('.b8').addClass('b8close').removeClass('b8');
-					$('.b8_board').css('display', 'block');
-					catListing('곡류')},
-					function(){
-					$('.b8close').addClass('b8').removeClass('b8close');  
-					$('.b8_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b9').toggle(function(){
-					$('.b9').addClass('b9close').removeClass('b9');
-					$('.b9_board').css('display', 'block');
-					catListing('해조류')},
-					function(){
-					$('.b9close').addClass('b9').removeClass('b9close');  
-					$('.b9_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b10').toggle(function(){
-					$('.b10').addClass('b10close').removeClass('b10');
-					$('.b10_board').css('display', 'block');
-					catListing('어패류')},
-					function(){
-					$('.b10close').addClass('b10').removeClass('b10close');  
-					$('.b10_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b11').toggle(function(){
-					$('.b11').addClass('b11close').removeClass('b11');
-					$('.b11_board').css('display', 'block');
-					catListing('갑각류')},
-					function(){
-					$('.b11close').addClass('b11').removeClass('b11close');  
-					$('.b11_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b12').toggle(function(){
-					$('.b12').addClass('b12close').removeClass('b12');
-					$('.b12_board').css('display', 'block');
-					catListing('버섯류')},
-					function(){
-					$('.b12close').addClass('b12').removeClass('b12close');  
-					$('.b12_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b13').toggle(function(){
-					$('.b13').addClass('b13close').removeClass('b13');
-					$('.b13_board').css('display', 'block');
-					catListing('채소류')},
-					function(){
-					$('.b13close').addClass('b13').removeClass('b13close');  
-					$('.b13_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b14').toggle(function(){
-					$('.b14').addClass('b14close').removeClass('b14');
-					$('.b14_board').css('display', 'block');
-					catListing('소스류')},
-					function(){
-					$('.b14close').addClass('b14').removeClass('b14close');  
-					$('.b14_board').css('display', 'none');
-				});
-		});
-		$(document).ready(function(){
-			$('.b15').toggle(function(){
-					$('.b15').addClass('b15close').removeClass('b15');
-					$('.b15_board').css('display', 'block');
-					catListing('기타')},
-					function(){
-					$('.b15close').addClass('b15').removeClass('b15close');  
-					$('.b15_board').css('display', 'none');
-				});
-		});
+         </div>
+      </div>
+      <div class="b6_board">
+         <div class="b6_list" id="b6">
+            
+         </div>
+      </div>
+      <div class="b7_board">
+         <div class="b7_list" id="b7">
+            
+         </div>
+      </div>
+      <div class="b8_board">
+         <div class="b8_list" id="b8">
+            
+         </div>
+      </div>
+      <div class="b9_board">
+         <div class="b9_list" id="b9">
+            
+         </div>
+      </div>
+      <div class="b10_board">
+         <div class="b10_list" id="b10">
+            
+         </div>
+      </div>
+      <div class="b11_board">
+         <div class="b11_list" id="b11">
+            
+         </div>
+      </div>
+      <div class="b12_board">
+         <div class="b12_list" id="b12">
+            
+         </div>
+      </div>
+      <div class="b13_board">
+         <div class="b13_list" id="b13">
+            
+         </div>
+      </div>
+      <div class="b14_board">
+         <div class="b14_list" id="b14">
+            
+         </div>
+      </div>
+      <div class="b15_board">
+         <div class="b15_list" id="b15">
+            
+         </div>
+      </div>
+      
+   </form>
+   
+   <!-- id는 card -->
+   <div class="project-card" id = "card">
+      <!-- <div class="c1">                 
+         
+      </div>
+      <div class="c2">
+         
+      </div>
+      <div class="c3">
+         <div class="c3-project-img" id="food"></div>
+         <div class="c3-project-explain">
+            <p>3냐옹!</p>
+            <div class="c3-project-btn">
+               <button type="button" onclick="location.href='http://google.com' ">선택하기</button>
+            </div>
+         </div>
+      </div> -->
+   </div>
+   
+   <div class="bt">
+      <button id = "submitButton">제출하기</button>
+   </div>
+   
+   
+   <script>
 
-		$(document).ready(function(){
-			$('.bt button').toggle(function(){
-				$('.project-card').css('display', 'block');
-				$('.bt button').text('다시하기');},
-				function(){ 
-				$('.project-card').css('display', 'none');
-				$('.bt button').text('제출하기');});
-		});
+      $j(document).ready(function(){
+         $j('.b1').toggle(function(){
+            
+               $j('.b1').addClass('b1close').removeClass('b1');
+               $j('.b1_board').css('display', 'block');
+               catListing('알류');},
+               function(){
+               $j('.b1close').addClass('b1').removeClass('b1close');  
+               $j('.b1_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b2').toggle(function(){
+               $j('.b2').addClass('b2close').removeClass('b2');
+               $j('.b2_board').css('display', 'block');
+               catListing('유제품');},
+               function(){
+               $j('.b2close').addClass('b2').removeClass('b2close');  
+               $j('.b2_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b3').toggle(function(){
+               $j('.b3').addClass('b3close').removeClass('b3');
+               $j('.b3_board').css('display', 'block');
+               catListing('유지류');},
+               function(){
+               $j('.b3close').addClass('b3').removeClass('b3close');  
+               $j('.b3_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b4').toggle(function(){
+               $j('.b4').addClass('b4close').removeClass('b4');
+               $j('.b4_board').css('display', 'block');
+               catListing('견과류');},
+               function(){
+               $j('.b4close').addClass('b4').removeClass('b4close');  
+               $j('.b4_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b5').toggle(function(){
+               $j('.b5').addClass('b5close').removeClass('b5');
+               $j('.b5_board').css('display', 'block');
+               catListing('과일류');},
+               function(){
+               $j('.b5close').addClass('b5').removeClass('b5close');  
+               $j('.b5_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b6').toggle(function(){
+               $j('.b6').addClass('b6close').removeClass('b6');
+               $j('.b6_board').css('display', 'block');
+               catListing('육류')},
+               function(){
+               $j('.b6close').addClass('b6').removeClass('b6close');  
+               $j('.b6_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b7').toggle(function(){
+               $j('.b7').addClass('b7close').removeClass('b7');
+               $j('.b7_board').css('display', 'block');
+               catListing('콩류')},
+               function(){
+               $j('.b7close').addClass('b7').removeClass('b7close');  
+               $j('.b7_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b8').toggle(function(){
+               $j('.b8').addClass('b8close').removeClass('b8');
+               $j('.b8_board').css('display', 'block');
+               catListing('곡류')},
+               function(){
+               $j('.b8close').addClass('b8').removeClass('b8close');  
+               $j('.b8_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b9').toggle(function(){
+               $j('.b9').addClass('b9close').removeClass('b9');
+               $j('.b9_board').css('display', 'block');
+               catListing('해조류')},
+               function(){
+               $j('.b9close').addClass('b9').removeClass('b9close');  
+               $j('.b9_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b10').toggle(function(){
+               $j('.b10').addClass('b10close').removeClass('b10');
+               $j('.b10_board').css('display', 'block');
+               catListing('어패류')},
+               function(){
+               $j('.b10close').addClass('b10').removeClass('b10close');  
+               $j('.b10_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b11').toggle(function(){
+               $j('.b11').addClass('b11close').removeClass('b11');
+               $j('.b11_board').css('display', 'block');
+               catListing('갑각류')},
+               function(){
+               $j('.b11close').addClass('b11').removeClass('b11close');  
+               $j('.b11_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b12').toggle(function(){
+               $j('.b12').addClass('b12close').removeClass('b12');
+               $j('.b12_board').css('display', 'block');
+               catListing('버섯류')},
+               function(){
+               $j('.b12close').addClass('b12').removeClass('b12close');  
+               $j('.b12_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b13').toggle(function(){
+               $j('.b13').addClass('b13close').removeClass('b13');
+               $j('.b13_board').css('display', 'block');
+               catListing('채소류')},
+               function(){
+               $j('.b13close').addClass('b13').removeClass('b13close');  
+               $j('.b13_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b14').toggle(function(){
+               $j('.b14').addClass('b14close').removeClass('b14');
+               $j('.b14_board').css('display', 'block');
+               catListing('소스류')},
+               function(){
+               $j('.b14close').addClass('b14').removeClass('b14close');  
+               $j('.b14_board').css('display', 'none');
+            });
+      });
+      $j(document).ready(function(){
+         $j('.b15').toggle(function(){
+               $j('.b15').addClass('b15close').removeClass('b15');
+               $j('.b15_board').css('display', 'block');
+               catListing('기타')},
+               function(){
+               $j('.b15close').addClass('b15').removeClass('b15close');  
+               $j('.b15_board').css('display', 'none');
+            });
+      });
 
-		
-	</script>
+	//   원래 희아가 이 밑에 사진 나오도록 짬 orders 리스트 사용을 위해 이동
+    //   $j(document).ready(function(){
+         
+    //   });
+
+      
+   </script>
 </body>
 </html>
