@@ -13,77 +13,73 @@ $(document).ready(async function () {
         orders.push(response['recipe']);  //orders 안에 레시피 들어감 
       } else {
         alert('기사를 받아오지 못했습니다');
-      }     
+      }
     }
   })
-  
+
 
   // 여기서 카드를 보여주는 js 코드 필요. document.ready 함수가 뭔지 먼저 알기 (계속 시작하는 함수인지)
   // 제출하기를 누르면 카드가 생기는 것. 카드의 개수가 여러개 생김 (위에 처럼 바꿔야함 메뉴 나오는 것)
-  
-  $j('.bt button').toggle(function () {
-      var element = getChecked()
-      seil(element, orders);
-      
 
-      $j('.project-card').css('display', 'block');
-      $j('.bt button').text('다시하기');
-    },
+  $j('.bt button').toggle(function () {
+    var element = getChecked()
+    seil(element, orders);
+
+
+    $j('.project-card').css('display', 'block');
+    $j('.bt button').text('다시하기');
+  },
     function () {
-     
-      
-      
+
       $j('.project-card').css('display', 'none');
       $j('.bt button').text('제출하기');
     });
-    
+
 });
 
-
-
-    
-      
-    
-
-function seil(element, orders)
-{
+function seil(element, orders) {
+  console.log("in seil")
   let picture_html = ''
   var recipe_final = new Array();
   var count = 0;
-  for(var i = 0; i<element.length; i++)
-  {
-      
-      for(var j =0; j<orders[0].length; j++)
-      {
-        var material = orders[0][j]["recipe_main"].split('&');
-        for(var k in material)
-        {
-          if(!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
-            break;
-          if(element[i] == material[k])
-          {
-            count++;
-            console.log(material[k]);
-            recipe_final.push(orders[0][j]["title"]);
+  for (var i = 0; i < element.length; i++) {
 
-            picture_html += '<div class = "c'+(count%3+1)+' ">\
+    for (var j = 0; j < orders[0].length; j++) {
+      var material = orders[0][j]["recipe_main"].split('&');
+      for (var k in material) {
+        if (!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+          break;
+        if (element[i] == material[k]) {
+          count++;
+          recipe_final.push(orders[0][j]["title"]);
+          
+          picture_html += '<div class = "c'+(count%3+1)+' ">\
             <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
             <div class = "c1-project-explain">\
             <p>"'+orders[0][j]["title"]+'"</p>\
             <div class = "c1-project-btn">\
-            <button type="button" onclick="location.href= \'http://localhost:5000/\' ">선택하기</button>\
+            <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
             </div>\
             </div>\
             </div>'
-            break;
-          }
+            
+          /* picture_html += '<div class = "c' + (count) + '">'
+          picture_html += "<div class=\"c1-project-img\"  id=\"food\" style=\"background-image: url(" + orders[0][j]["img"] + ")\"></div>"
+          picture_html += "<div class = \"c1-project-explain\">"
+          picture_html += "<p>\"" + orders[0][j]["title"] + "</p>"
+          picture_html += "<div class = \"c1-project-btn\">"
+          picture_html += "<button type=\"button\" onclick=\"location.href= \'http://localhost:5000/yuna?_id=\'" + orders[0][j]["_id"] + "\">선택하기</button>"
+          picture_html += "</div></div></div>"  */
+
+          break;
         }
-        
-        
-      
       }
-      
-      
+      // +orders[0][j]["img"]
+
+
+    }
+
+
   }
   $('#card').empty()
   $('#card').append(picture_html);
@@ -100,24 +96,24 @@ function seil(element, orders)
 //     success: function (response) {
 //       if (response['result'] == 'success') {
 //         orders = response['recipe'];
-        
+
 
 //         console.log(response);
 //         console.log(orders);
-        
+
 //       } else {
 //         alert('기사를 받아오지 못했습니다');
 //       }
 //       callbackFunc(orders);
 //     }
-    
+
 //   })
-  
+
 // }
 //  listing(function(orders2) {
 //   console.log(orders2);
 //   lister = orders2;
- 
+
 // }) 
 
 // <<<<<<<<<<listing 함수 ajax 인데 리턴이 안되어서 남김 by. 세일>>>>>>>>>>>> 
@@ -130,59 +126,59 @@ function seil(element, orders)
 //     success: function (response) {
 //       if (response['result'] == 'success') {
 //         orders.push(response['recipe']);
-        
+
 
 //         console.log(response);
 //         console.log(orders);
-        
+
 //       } else {
 //         alert('기사를 받아오지 못했습니다');
 //       }
 
-      
+
 //     }
-    
+
 //   })
-  
+
 // } 
 
 
 // 체크된 리스트 반환하는 함수: 제출하기 버튼 누르면 실행됨
 function getChecked() {
   var checkedlist = new Array();
-  
-  var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
-  
 
-    for (var i = 0; i < el1.length; i++) {
-      if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
-        checkedlist.push((el1[i].value))
-      }
+  var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
+
+
+  for (var i = 0; i < el1.length; i++) {
+    if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+      checkedlist.push((el1[i].value))
     }
-    return checkedlist;
+  }
+  return checkedlist;
 
 }
-  // 이 아래는 ready function에 왜 넣은지 몰라서 안에만 빼서 둠 
-  // $(document).ready(function () {
-  //   var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
+// 이 아래는 ready function에 왜 넣은지 몰라서 안에만 빼서 둠 
+// $(document).ready(function () {
+//   var el1 = document.getElementsByName("recipe") // name이 recipe인 요소 리스트로 받기
 
 
-  //   for (var i = 0; i < el1.length; i++) {
-  //     if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
-  //       checkedlist.push((el1[i].value))
+//   for (var i = 0; i < el1.length; i++) {
+//     if ($(el1[i]).prop("checked") == true) { // 체크된 항목인 경우 
+//       checkedlist.push((el1[i].value))
 
-  //       console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
-  //       // recipe=append((checkedlist).push((el1[i].value)))
+//       console.log("이거는 값을 직접 찍은거야: " + el1[i].value + " 타입은" + typeof (el1[i].value))
+//       // recipe=append((checkedlist).push((el1[i].value)))
 
-  //     }
-  //   }
-  //   console.log("checkedlist[0]: " + checkedlist[0])
-  //   console.log("checkedlist[1]: " + checkedlist[1])
-  //   console.log(checkedlist)
+//     }
+//   }
+//   console.log("checkedlist[0]: " + checkedlist[0])
+//   console.log("checkedlist[1]: " + checkedlist[1])
+//   console.log(checkedlist)
 
-  //   return checkedlist;
-  // });
-  // }
+//   return checkedlist;
+// });
+// }
 
 function catListing(Val) {
 
@@ -195,10 +191,10 @@ function catListing(Val) {
     gus = ["계란", "달걀", "메추리알", "날치알", "거위알"]
 
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
-    
-    
+
+
     $('#b1').empty()
     $('#b1').append(temp_html)
 
@@ -211,7 +207,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -222,7 +218,7 @@ function catListing(Val) {
   } if (Val == '유지류') {
     gus = ["코코넛오일", "콩기름", "튀김기름"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b3').empty()
@@ -230,7 +226,7 @@ function catListing(Val) {
   } if (Val == '견과류') {
     gus = ["아몬드", "아몬드가루", "잣", "캐슈넛", "피칸", "호두"]
     for (let i = 0; i < gus.length; i++) {
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -246,7 +242,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b5').empty()
@@ -263,7 +259,7 @@ function catListing(Val) {
       if (i % 8 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -276,7 +272,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b7').empty()
@@ -290,7 +286,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -303,7 +299,7 @@ function catListing(Val) {
       if ((i + 1) % 12 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b9').empty()
@@ -317,7 +313,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b10').empty()
@@ -330,7 +326,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b11').empty()
@@ -343,7 +339,7 @@ function catListing(Val) {
       if (i % 9 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -365,7 +361,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
     }
 
     $('#b13').empty()
@@ -385,7 +381,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
@@ -407,7 +403,7 @@ function catListing(Val) {
       if (i % 10 == 0) {
         temp_html += '<div></div>'
       }
-      temp_html += '<input type="checkbox" name="recipe" value="' +gus[i]+'" >'+ gus[i]
+      temp_html += '<input type="checkbox" name="recipe" value="' + gus[i] + '" >' + gus[i]
 
     }
 
