@@ -42,35 +42,41 @@ function seil(element, orders) {
   let picture_html = ''
   var recipe_final = new Array();
   var count = 0;
-  for (var i = 0; i < element.length; i++) {
+  for(var i = 0; i<element.length; i++)
+  {
+      
+      for(var j =0; j<orders[0].length; j++)
+      {
+        var material = orders[0][j]["recipe_main"].split('&');
+        for(var k in material)
+        {
+          if(!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
+            break;
+          if(element[i] == material[k])
+          {
+            count++;
+            console.log(material[k]);
+            recipe_final.push(orders[0][j]["title"]);
 
-    for (var j = 0; j < orders[0].length; j++) {
-      var material = orders[0][j]["recipe_main"].split('&');
-      for (var k in material) {
-        if (!isNaN(material[k]))  //이상하게 재료뒤에 이상한 것들도 담아와서 숫자면 break 걸었음
-          break;
-        if (element[i] == material[k]) {
-          count++;
-          recipe_final.push(orders[0][j]["title"]);
-          
-          picture_html += '<div class = "c'+(count%3+1)+' ">\
+            /* picture_html += '<div class = "c1 ">\
             <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
             <div class = "c1-project-explain">\
-            <p>"'+orders[0][j]["title"]+'"</p>\
+            <p class="c1-project-t">"'+orders[0][j]["title"]+'"</p>\
             <div class = "c1-project-btn">\
             <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
             </div>\
             </div>\
-            </div>'
+            </div>' */
             
-          /* picture_html += '<div class = "c' + (count) + '">'
-          picture_html += "<div class=\"c1-project-img\"  id=\"food\" style=\"background-image: url(" + orders[0][j]["img"] + ")\"></div>"
-          picture_html += "<div class = \"c1-project-explain\">"
-          picture_html += "<p>\"" + orders[0][j]["title"] + "</p>"
-          picture_html += "<div class = \"c1-project-btn\">"
-          picture_html += "<button type=\"button\" onclick=\"location.href= \'http://localhost:5000/yuna?_id=\'" + orders[0][j]["_id"] + "\">선택하기</button>"
-          picture_html += "</div></div></div>"  */
-
+          picture_html += '<div class = "c1 ">\
+            <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
+            <div class = "c1-project-explain">\
+            <p class="c1-project-t">"'+orders[0][j]["title"]+'"</p>\
+            <div class = "c1-project-btn">\
+            <button type="button" onclick="location.href= \'http://localhost:5000/yuna?_id='+orders[0][j]["_id"]+ '\'">선택하기</button>\
+            </div>\
+            </div>\
+            </div>' 
           break;
         }
       }
