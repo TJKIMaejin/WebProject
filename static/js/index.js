@@ -58,15 +58,7 @@ function seil(element, orders) {
             console.log(material[k]);
             recipe_final.push(orders[0][j]["title"]);
 
-            /* picture_html += '<div class = "c1 ">\
-            <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
-            <div class = "c1-project-explain">\
-            <p class="c1-project-t">"'+orders[0][j]["title"]+'"</p>\
-            <div class = "c1-project-btn">\
-            <button type="button" onclick="location.href= \'http://google.com\' ">선택하기</button>\
-            </div>\
-            </div>\
-            </div>' */
+      
             
           picture_html += '<div class = "c1 ">\
             <div class="c1-project-img"  id="food" style="background-image: url(' +orders[0][j]["img"]+ ')"></div>\
