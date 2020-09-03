@@ -52,10 +52,13 @@
                         </tr>
                 </thead>
                 <tbody>
+                        <tr id = haed_id>
                         <td id="div_img"></td>
                         <td id="mallName"></td>
                         <td id="lprice"></td>
                         <td id="link"></td>
+
+                        
                 </tbody>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -69,17 +72,18 @@
                                 success : function(response) {
                                         $(document).ready(function(){
                                                 for(var i=0;i<3;i++) {
-                                                        $("#div_img").html('');
-                                                        $("#div_img").append("<img src=" + "\"" + response['info'][i]['image'] + "\"" + " width=\"50px\" height=\"70px\" />" );
+                                                       //$("#div_img").html('');
+                                                        $("#head_id").append("<tr>")
+                                                        $("#div_img").append("<img src=" + "\"" + response['info'][i]['image'] + "\"" + " width=\"50px\" height=\"70px\" />"+"<div></div>" );
                                                         
-                                                        $("#mallName").html('');
-                                                        $("#mallName").append("<td>" + response['info'][i]['mallName'] + "</td>");
+                                                        //$("#mallName").html('');
+                                                        $("#mallName").append( response['info'][i]['mallName']+"<div></div>");
                                                         
-                                                        $("#lprice").html('');
-                                                        $("#lprice").append("<td>" + response['info'][i]['lprice'] + "</td>");
+                                                        //$("#lprice").html('');
+                                                        $("#lprice").append(response['info'][i]['lprice']+ "<div></div>");
                                                                 
-                                                        $("#link").html('');
-                                                        $("#link").append("<td>" + response['info'][i]['link'] + "</td>" + "</tr>");
+                                                        //$("#link").html('');
+                                                        $("#link").append(response['info'][i]['link'] + "<div></div>" + "</tr>" );
                                                 }
                                         })
                                 }
