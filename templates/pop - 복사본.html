@@ -125,6 +125,13 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		let now_query = document.location.href.split("?")[1];
+			query_content = now_query.split("=")[0];
+
+		
+
+
+
 		function template(template_id, food_data){
                 var c = $('.' + template_id).clone();
                 var html = $('<div>').append(c).html();

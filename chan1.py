@@ -3,11 +3,24 @@ import os
 import sys
 from urllib.parse import quote
 import json
-import flask
+from flask import Flask, render_template, request, jsonify
 
-# 네이버 api call
-def call(keyword):
-#    checkstr = keyword
+app = Flask(__name__)
+
+@app.route('/')
+def home() :
+    return render_template('recipe.html')
+
+@app.route('/chan')
+def chan_render() :
+    return render_template('search.html')
+
+@app.route('/chan1', methods=['GET'])
+
+def chan_get():
+
+    keyword = request.args.get("keyword")
+
     encText = quote(keyword)
     display = 3
     url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=" + str(display) + "&start=1" + "&sort=sim"
@@ -24,24 +37,11 @@ def call(keyword):
     else:
         print("Error code:"+rescode)
 
-    list1 = [[{}]*5 for i in range(5)]
-    for i in range (0,display) :
-        list1[1][i] =json_data[i]["image"]
-    for i in range (0,display) :
-        list1[2][i] = json_data[i]["title"]
-    for i in range (0,display) :
-        list1[3][i] = json_data[i]["link"]
-    for i in range (0,display) :
-        list1[4][i] = json_data[i]["lprice"]
-    
-    return list1
+    return jsonify({"result" : 'success', 'info' : json_data})
 
-list = call("양파")
+if __name__ == '__main__':
 
-print(list)
-#list = []
-#    list = json_data
-#    food_data = []
-#    for i in range (0,display) :
-#        if ( list[i]['category4'] == checkstr ) :
-#            food_data.append(list[i])
+  app.run('0.0.0.0', port=5000, debug = True)
+
+
+
