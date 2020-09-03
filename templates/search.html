@@ -60,8 +60,8 @@
         <script type="text/javascript">
         	let now_query = document.location.href.split("?")[1];
 		query_content = now_query.split("=")[0];
-                if(query_content == "ingredi") {
-                        $a.jax({
+                if( now_query.split("=")[1] = "ingredi") {
+                        $.ajax({
                                 url : "/chan1?"+ now_query,
                                 type : 'GET',
                                 data : {},
