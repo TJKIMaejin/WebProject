@@ -47,22 +47,16 @@
                 <thead>
                         <tr>
                         <th scope="col">재료사진</th>
-                        <th scope="col">재료이름</th>
+                        <th scope="col">쇼핑물 이름</th>
                         <th scope="col">가격</th>
+                        <th scope="col">링크</th>
                         </tr>
                 </thead>
-                <tbody id="list">
-                        <tr class="__oldlist" style="">
-                                <td colspan="7">검색 결과가 없습니다.</td>
-                        </tr>
-                        <tr class="__template" style="display: none">
-                                <td><img src="#image#"  width="50px" height="70px" /></td>
-                                <td>#title#</td>
-                                <td>#lprice#</td>
-                        </tr>
-                </tbody>
-        </table>
-
+                <div id="div_img"></div>
+                <div id="mallName"></div>
+                <div id="lprcie"></div>
+                <div id="link"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
         	let now_query = document.location.href.split("?")[1];
 		query_content = now_query.split("=")[0];
@@ -73,27 +67,26 @@
                                 data : {},
                                 success : function(response) {
                                         $(document).ready(function(){
-                                                if(reponse['display']>0){
-                                                        $('.__oldlist').remove();
-                                                        for(var i in response['display']){
-                                                                var c = $('.' + template_id).clone();
-                                                                var html = $('<div>').append(c).html();
-                                                                for(var key in response[display]){
-                                                                        html = html.replace(new RegExp('#' + key + '#', 'g'), response[display][key]);
-                                                                }
-                                                                html = html.replace(/#template_([^#]*)#/g, '$1');
-                                                                var $html = $(html).removeClass(template_id).removeClass('__template');
-                                                                return $html;
-                                                        }
-                                                } 
-                                                else{
-                                                        $('#result').html('');
-                                                        $('#result').append("데이터가 없거나 정상적으로 로딩 되지 않았습니다.");
+                                                for(var i in response['display']) {
+                                                        $("#div_img").html('');
+                                                        $("#div_img").append("<tr>" + "<td>" + "<img class = \"image\" src=" + response[i]['image'] + "width=\"50px\" height=\"70px\" />" + "</td>");
+                                                        
+                                                        $("#mallName").html('');
+                                                        $("#mallName").append("<td>" + response[i]['mallName'] + "</td>");
+                                                        
+                                                        $("#lprice").html('');
+                                                        $("#lprice").append("<td>" + response[i]['lprcie'] + "</td>");
+                                                        
+                                                        $("#link").html('');
+                                                        $("#link").append("<td>" + response[i]['link'] + "</td>" + "</tr>");
                                                 }
-                                                }
-                                        )}
+                                        })
+                                }
                         })
+                        
                 }
+        
+                
                 /* function template(template_id, params){
                         var c = $('.' + template_id).clone();
                         var html = $('<div>').append(c).html();
@@ -105,6 +98,7 @@
                         return $html; 
                 } */
         </script>
+        </table>
 
 </body>
 
