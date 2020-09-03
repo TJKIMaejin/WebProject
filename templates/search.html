@@ -52,11 +52,27 @@
                         </tr>
                 </thead>
                 <tbody>
-                        <tr id = haed_id>
-                        <td id="div_img"></td>
-                        <td id="mallName"></td>
-                        <td id="lprice"></td>
-                        <td id="link"></td>
+                        <tr>
+                                <td id="div_img_0"></td>
+                                <td id="mallName_0"></td>
+                                <td id="lprice_0"></td>
+                                <td id="link_0"></td>
+                        </tr>
+
+                        <tr>
+                                <td id="div_img_1"></td>
+                                <td id="mallName_1"></td>
+                                <td id="lprice_1"></td>
+                                <td id="link_1"></td>
+                        </tr>
+
+                        <tr>
+                                <td id="div_img_2"></td>
+                                <td id="mallName_2"></td>
+                                <td id="lprice_2"></td>
+                                <td id="link_2"></td>
+                        </tr>
+
 
                         
                 </tbody>
@@ -71,20 +87,33 @@
                                 data : {},
                                 success : function(response) {
                                         $(document).ready(function(){
-                                                for(var i=0;i<3;i++) {
-                                                       //$("#div_img").html('');
-                                                        $("#head_id").append("<tr>")
-                                                        $("#div_img").append("<img src=" + "\"" + response['info'][i]['image'] + "\"" + " width=\"50px\" height=\"70px\" />"+"<div></div>" );
+                                                $("#div_img_0").append("<img src=" + "\"" + response['info'][0]['image'] + "\"" + " width=\"100px\" height=\"100px\" />" +"<div></div>");
                                                         
-                                                        //$("#mallName").html('');
-                                                        $("#mallName").append( response['info'][i]['mallName']+"<div></div>");
+                                                $("#mallName_0").append( response['info'][0]['mallName']+"<div></div>");
                                                         
-                                                        //$("#lprice").html('');
-                                                        $("#lprice").append(response['info'][i]['lprice']+ "<div></div>");
+                                                $("#lprice_0").append(response['info'][0]['lprice']+"<div></div>");
                                                                 
-                                                        //$("#link").html('');
-                                                        $("#link").append(response['info'][i]['link'] + "<div></div>" + "</tr>" );
-                                                }
+                                                $("#link_0").append("<a href =" + response['info'][0]['link'] + ">" + response['info'][0]['link'] + "</a>" + "<div></div>");
+
+                                                
+
+                                                $("#div_img_0").append("<img src=" + "\"" + response['info'][1]['image'] + "\"" + " width=\"50px\" height=\"40px\" />" +"<div></div>");
+                                                        
+                                                $("#mallName_0").append( response['info'][1]['mallName']+"<div></div>");
+                                                                
+                                                $("#lprice_0").append(response['info'][1]['lprice']+ "<div></div>");
+                                                                        
+                                                $("#link_0").append("<a href =" + response['info'][1]['link'] + ">" +  response['info'][1]['link'] + " </a>" + "<div></div>" + "</tr>" );
+
+
+                                                $("#div_img_0").append("<img src=" + "\"" + response['info'][2]['image'] + "\"" + " width=\"50px\" height=\"40px\" />"+"<div></div>" );
+                                                        
+                                                $("#mallName_0").append( response['info'][2]['mallName']+"<div></div>");
+                                                                
+                                                $("#lprice_0").append(response['info'][2]['lprice']+ "<div></div>");
+                                                                        
+                                                $("#link_0").append("<a href =" + response['info'][2]['link'] + ">" + response['info'][2]['link'] + "</a>" + "<div></div>" + "</tr>" );
+                                                
                                         })
                                 }
                         })

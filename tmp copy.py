@@ -66,12 +66,6 @@ def yuna_get():
     return jsonify({"result": 'success', 'info': recipe_info})
 
 
-@app.route("/tmp")
-def tmp():
-  print("hello")
-  return "helloS"
-
-
 """ 찬진이 검색 결과(재료)로 연결하기 """
 
 

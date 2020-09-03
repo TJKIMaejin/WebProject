@@ -3,6 +3,12 @@ from flask import Flask, render_template, request, jsonify
 
 from bson import ObjectId
 
+import urllib.request
+import os
+import sys
+from urllib.parse import quote
+import json
+
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
@@ -53,6 +59,34 @@ def yuna_get():
     recipe_info = db2.recipe.find_one({"_id": id}, {"_id": 0})
 
     return jsonify({"result": 'success', 'info': recipe_info})
+
+@app.route('/chan')
+def chan_render() :
+    return render_template('search.html')
+
+@app.route("/chan1", methods=["GET"])
+def chan_get():
+    # 일단 요청 결과만 리턴하자.. 구체적 내용은 추후에 작업
+    indgred = request.args.get("ingredi")
+    keyword = str(indgred)
+    encText = quote(keyword)
+    display = 3
+    url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=" + str(display) + "&start=1" + "&sort=sim"
+    request1 = urllib.request.Request(url)
+    request1.add_header("X-Naver-Client-Id","oXfhI4we88tBhBs1hxY_")
+    request1.add_header("X-Naver-Client-Secret","mruETz2SMm")
+    response = urllib.request.urlopen(request1)
+    rescode=response.getcode()
+#    json_really_data = []
+    if(rescode == 200):
+        response_body = response.read()
+        middle_data = json.loads(response_body)
+        json_data = middle_data['items']
+    else:
+        print("Error code:"+rescode)
+
+    return jsonify({"result" : 'success', 'info' : json_data})
+
 
 
 if __name__ == '__main__':
