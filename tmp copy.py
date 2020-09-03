@@ -95,15 +95,15 @@ def chan_render() :
 @app.route("/chan1", methods=["GET"])
 def chan_get():
     # 일단 요청 결과만 리턴하자.. 구체적 내용은 추후에 작업
-    keyword = request.args.get("keyword")
-
+    indgred = request.args.get("keyword")
+    keyword = str(indgred)
     encText = quote(keyword)
     display = 3
     url = "https://openapi.naver.com/v1/search/shop?query=" + encText + "&display=" + str(display) + "&start=1" + "&sort=sim"
-    request = urllib.request.Request(url)
-    request.add_header("X-Naver-Client-Id","oXfhI4we88tBhBs1hxY_")
-    request.add_header("X-Naver-Client-Secret","mruETz2SMm")
-    response = urllib.request.urlopen(request)
+    request1 = urllib.request.Request(url)
+    request1.add_header("X-Naver-Client-Id","oXfhI4we88tBhBs1hxY_")
+    request1.add_header("X-Naver-Client-Secret","mruETz2SMm")
+    response = urllib.request.urlopen(request1)
     rescode=response.getcode()
 #    json_really_data = []
     if(rescode == 200):
