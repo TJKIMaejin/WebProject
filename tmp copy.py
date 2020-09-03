@@ -95,7 +95,7 @@ def chan_render() :
 @app.route("/chan1", methods=["GET"])
 def chan_get():
     # 일단 요청 결과만 리턴하자.. 구체적 내용은 추후에 작업
-    indgred = request.args.get("keyword")
+    indgred = request.args.get("__ingredi")
     keyword = str(indgred)
     encText = quote(keyword)
     display = 3

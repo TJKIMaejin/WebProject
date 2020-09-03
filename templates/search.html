@@ -60,25 +60,25 @@
         <script type="text/javascript">
         	let now_query = document.location.href.split("?")[1];
 		query_content = now_query.split("=")[0];
-                if( now_query.split("=")[1] = "ingredi") {
+                if( now_query.split("=")[1] = "__ingredi") {
                         $.ajax({
                                 url : "/chan1?"+ now_query,
                                 type : 'GET',
                                 data : {},
                                 success : function(response) {
                                         $(document).ready(function(){
-                                                for(var i in response['display']) {
+                                                for(var i=0;i<4;i++) {
                                                         $("#div_img").html('');
-                                                        $("#div_img").append("<tr>" + "<td>" + "<img class = \"image\" src=" + response[i]['image'] + "width=\"50px\" height=\"70px\" />" + "</td>");
+                                                        $("#div_img").append("<tr>" + "<td>" + "<img class = \"image\" src=" + response['info'][i]['image'] + "width=\"50px\" height=\"70px\" />" + "</td>");
                                                         
                                                         $("#mallName").html('');
-                                                        $("#mallName").append("<td>" + response[i]['mallName'] + "</td>");
+                                                        $("#mallName").append("<td>" + response['info'][i]['mallName'] + "</td>");
                                                         
                                                         $("#lprice").html('');
-                                                        $("#lprice").append("<td>" + response[i]['lprcie'] + "</td>");
+                                                        $("#lprice").append("<td>" + response['info'][i]['lprcie'] + "</td>");
                                                         
                                                         $("#link").html('');
-                                                        $("#link").append("<td>" + response[i]['link'] + "</td>" + "</tr>");
+                                                        $("#link").append("<td>" + response['info'][i]['link'] + "</td>" + "</tr>");
                                                 }
                                         })
                                 }
