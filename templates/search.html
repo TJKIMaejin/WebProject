@@ -30,7 +30,6 @@
         </style>
 </head>
 <body>
-        <h1>오늘 뭐 먹지?</h1>
         <div class="search_food">
 
         <table cellspacing="0" border="1" summary="재료검색 API 결과" class="tbl_type">
@@ -52,31 +51,33 @@
                         <th scope="col">링크</th>
                         </tr>
                 </thead>
-                <div id="div_img"></div>
-                <div id="mallName"></div>
-                <div id="lprcie"></div>
-                <div id="link"></div>
+                <tbody>
+                        <td id="div_img"></td>
+                        <td id="mallName"></td>
+                        <td id="lprice"></td>
+                        <td id="link"></td>
+                </tbody>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
         	let now_query = document.location.href.split("?")[1];
 		query_content = now_query.split("=")[0];
-                if( now_query.split("=")[1] = "__ingredi") {
+                if( now_query.split("=")[0] = "ingredi") {
                         $.ajax({
                                 url : "/chan1?"+ now_query,
                                 type : 'GET',
                                 data : {},
                                 success : function(response) {
                                         $(document).ready(function(){
-                                                for(var i=0;i<4;i++) {
+                                                for(var i=0;i<3;i++) {
                                                         $("#div_img").html('');
-                                                        $("#div_img").append("<tr>" + "<td>" + "<img class = \"image\" src=" + response['info'][i]['image'] + "width=\"50px\" height=\"70px\" />" + "</td>");
+                                                        $("#div_img").append("<img src=" + "\"" + response['info'][i]['image'] + "\"" + " width=\"50px\" height=\"70px\" />" );
                                                         
                                                         $("#mallName").html('');
                                                         $("#mallName").append("<td>" + response['info'][i]['mallName'] + "</td>");
                                                         
                                                         $("#lprice").html('');
-                                                        $("#lprice").append("<td>" + response['info'][i]['lprcie'] + "</td>");
-                                                        
+                                                        $("#lprice").append("<td>" + response['info'][i]['lprice'] + "</td>");
+                                                                
                                                         $("#link").html('');
                                                         $("#link").append("<td>" + response['info'][i]['link'] + "</td>" + "</tr>");
                                                 }
@@ -85,18 +86,6 @@
                         })
                         
                 }
-        
-                
-                /* function template(template_id, params){
-                        var c = $('.' + template_id).clone();
-                        var html = $('<div>').append(c).html();
-                        for(var key in params){
-                                html = html.replace(new RegExp('#' + key + '#', 'g'), params[key]);
-                        }
-                        html = html.replace(/#template_([^#]*)#/g, '$1');
-                        var $html = $(html).removeClass(template_id).removeClass('__template');
-                        return $html; 
-                } */
         </script>
         </table>
 
